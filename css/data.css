@@ -1,0 +1,115 @@
+view-data {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: transparent;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+view-data tr{
+    max-height: 10vh;
+    display: grid;
+    grid-template-rows: 100%;
+    border-bottom: white 1px solid;
+    width: fit-content;
+    background-color: aliceblue;
+}
+view-data tr td, view-data tr th{
+    border-right: white 1px solid;
+}
+view-data tr input{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+view-data tr th input{
+    text-align: center;
+    color: white;
+    font-size: 15px;
+}
+
+view-data tr th {
+    background-color:  deepskyblue;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    
+}
+
+view-data tr:nth-child(odd) {
+    background-color: lightskyblue;
+    
+}
+
+view-data tr:nth-child(odd)  input{
+    color: aliceblue;
+    font-weight: bold;
+    
+}
+view-data tr td input[type="number"]{
+    text-align: center;
+    font-size: 15px;
+}
+view-data tr td{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+view-data tr td:has(input[type="checkbox"]){
+    padding: 1vw;
+}
+
+
+view-data tr:nth-child(odd) toggle-switch:has(input[type=checkbox]:checked):before {
+  background-color: aliceblue;
+}
+view-data tr:nth-child(odd) toggle-switch:has(input[type=checkbox]:checked):after {
+  color: aliceblue;
+ 
+}
+
+view-data tr:nth-child(odd) toggle-switch:has(input[type=checkbox]:checked){
+    border-color: aliceblue;
+}
+
+view-data tr th .thSlicer{
+    background-color: transparent;
+    width: .5vw;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    cursor: grab;
+    user-select: none;
+    
+}
+
+view-data tr th .thSlicer:active{
+    cursor: grabbing;
+}
+
+view-data tr td:has(div.select-box){
+    padding: 1vw;
+}
+
+view-data tr td:has(input[type="text"]){
+    padding: 0 1vw;
+}
+
+view-data tr:nth-child(odd) .select-box {
+    border-color: aliceblue;
+    color: aliceblue;
+}
+view-data tr:nth-child(odd) .select-box::after{
+    border-color: aliceblue;
+}

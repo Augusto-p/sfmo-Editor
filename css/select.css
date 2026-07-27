@@ -1,0 +1,141 @@
+.select-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    border: 2px solid deepskyblue;
+    border-radius: 4px;
+    color: deepskyblue;
+    box-sizing: border-box;
+    min-height: 30px;
+    padding-right: 33px;
+}
+
+.select-box .current {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 22px;
+}
+
+.select-box .current:focus-within+ul {
+    opacity: 1;
+    -webkit-animation-name: none;
+    animation-name: none;
+}
+
+
+.select-box .current:focus-within+ul label {
+    cursor: pointer;
+}
+
+.select-box:has(.current:focus-within)::after {
+    transform: rotate(225deg) translate(-6px, -6px);
+}
+
+.select-box::after {
+    content: " ";
+    background-color: transparent;
+    position: absolute;
+    top: calc(50% - 9px);
+    right: 5px;
+    transform: rotate(45deg);
+    width: 12px;
+    height: 12px;
+    border: solid 2px;
+    border-color: deepskyblue;
+    border-top: none;
+    border-left: none;
+    opacity: 1;
+    transition: 0.2s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+.select-box .current .value {
+    display: flex;
+    position: relative;
+    height: 100%;
+
+}
+
+.select-box .current input {
+    display: none;
+}
+
+.select-box .current input:checked+p {
+    display: flex;
+}
+
+.select-box .current p {
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0px;
+    background-color: transparent;
+    box-sizing: border-box;
+    min-height: 30px;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    align-items: center;
+}
+
+.select-box ul {
+    position: absolute;
+    z-index: 99;
+    width: calc(100% + 2vw);
+    transform: translateX(-1vw);
+    box-sizing: border-box;
+    padding: 0 10px;
+    list-style: none;
+    opacity: 0;
+    -webkit-animation-name: HideList;
+    animation-name: HideList;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: step-start;
+    animation-timing-function: step-start;
+    background-color: aliceblue;
+    overflow: hidden;
+    margin: 0;
+    margin-top: 1vh;
+    border-radius: 1vw;
+}
+
+
+.select-box ul label {
+    display: block;
+    padding: 10px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 15px;
+    color: deepskyblue;
+}
+
+.select-box ul label:hover,
+.select-box ul label:focus {
+    color: #546c84;
+    background-color: #fbfbfb;
+}
+
+
+
+
+@keyframes HideList {
+    from {
+        transform: scaleY(1);
+    }
+
+    to {
+        transform: scaleY(0);
+    }
+}

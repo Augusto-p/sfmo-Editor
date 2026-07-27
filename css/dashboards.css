@@ -1,0 +1,59 @@
+#Dashboards{
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #000000a0 ;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 99;
+    transition: all 1s;
+    padding: 3vw 5vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: center;
+    flex-direction: row;
+}
+
+body[data-Mode="Dash"] #Dashboards {
+    transform: translateX(-100vw);
+}
+#Bookmark{
+    position: absolute;
+    width: 15vw;
+    height: 3vw;
+    background-color: deepskyblue;
+    right: -6vw;
+    top: 20vh;
+    box-sizing: border-box;
+    padding: .5vw;
+    overflow: hidden;
+    border-bottom-left-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    color: #fff;
+    font-weight: 900;
+    transform: rotateZ(90deg);
+    font-size: 2vw;
+    cursor: pointer;
+    transition: all 1s;
+    z-index: 100;
+}
+body[data-Mode="Dash"] #Bookmark {
+    transform: translateX(-97vw) rotateZ(90deg);
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 2vw;
+    border-top-left-radius: 2vw;
+    border-bottom-right-radius: 0;
+
+}
+#Bookmark span{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}

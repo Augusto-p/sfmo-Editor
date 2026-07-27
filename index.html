@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/select.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/data.css">
+    <link rel="stylesheet" href="css/dashboards.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <title>Document</title>
+</head>
+
+<body data-mode="NoLoad">
+    <section id="LoadFile">
+        <input type="file" id="FileLoad" accept=".sfmo">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path
+                    d="M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H520q-33 0-56.5-23.5T440-240v-206l-64 62-56-56 160-160 160 160-56 56-64-62v206h220q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41h100v80H260Zm220-280Z" />
+            </svg>
+            <span>Drag & Drop Files Here to Upload</span>
+            <button>Select files to Upload</button>
+        </div>
+    </section>
+
+    <view-data id="Data"></view-data>
+
+    <div id="Bookmark">
+            <span>Dashboards</span>
+        </div>
+    <section id="Dashboards">
+        
+    </section>
+
+
+    <div id="Save">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM565-275q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/></svg>
+    </div>
+
+
+
+</body>
+<script src="js/value.js"></script>
+<script src="js/table.js"></script>
+<script src="js/select.js"></script>
+<script src="js/selectorType.js"></script>
+<script src="js/dataset.js"></script>
+<script src="js/dashBoard.js"></script>
+
+
+<script src="js/main.js"></script>
+
+<!-- <script> FileData = {
+    "Columns": [
+        {
+            "Name": "Aprovada",
+            "Type": "Boolean",
+            "Index": 1
+        },
+        {
+            "Name": "Materia",
+            "Type": "Text",
+            "Index": 2
+        },
+        {
+            "Name": "Creditos",
+            "Type": "Number",
+            "Index": 3
+        },
+        {
+            "Name": "Semestre Sugerido",
+            "Type": "Text",
+            "Index": 4
+        },
+        {
+            "Name": "Grupo",
+            "Type": "!Grupos",
+            "Index": 5
+        },
+        {
+            "Name": "SubGrupo",
+            "Type": "!![Grupo]Grupos",
+            "Index": 6
+        }
+    ],
+    "Datasets": {
+        "Grupos": {
+            "Básicas": {
+                "Matemática": null,
+                "Ciencias Experimentales": null
+            },
+            "Básico-tecnológicas": {
+                "Programación": null,
+                "Arquitectura, Sistemas Operativos y Redes de computadores": null,
+                "Inteligencia Artificial y Robótica": null,
+                "Bases de Datos y Sistemas de Información": null,
+                "Cálculo Numérico y Simbólico": null,
+                "Investigación Operativa ": null,
+                "Ingeniería de Software ": null,
+                "Gestión en Organizaciones": null,
+                "Actividades Integradoras : Talleres, pasa talleres, pasantías y proyectos": null
+            },
+            "Complementarias": {
+                "Ciencias Humanas y Sociales": null
+            }
+        }
+    },
+    "Dashboards": {
+        "Totales": {
+            "Columns": [
+                {
+                    "Name": "",
+                    "Index": 1
+                },
+                {
+                    "Name": "Valores",
+                    "Index": 2
+                }
+            ],
+            "Data": {
+                "Materias": [
+                    "=COUNT.IF(${Aprovada} == TRUE)"
+                ],
+                "Creditos": [
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE)"
+                ],
+                "Creditos Totales": [
+                    450
+                ]
+            }
+        },
+        "Grupos": {
+            "Columns": [
+                {
+                    "Name": "Grupo",
+                    "Index": 1
+                },
+                {
+                    "Name": "Total",
+                    "Index": 2
+                },
+                {
+                    "Name": "Actual",
+                    "Index": 3
+                }
+            ],
+            "Data": {
+                "Básicas": [
+                    80,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${Grupo} == 'Básicas')"
+                ],
+                "Básico-tecnológicas": [
+                    120,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${Grupo} == 'Básico-tecnológicas')"
+                ],
+                "Complementarias": [
+                    10,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${Grupo} == 'Complementarias')"
+                ]
+            }
+        },
+        "Grupos De Básicas": {
+            "Columns": [
+                {
+                    "Name": "SubGrupo",
+                    "Index": 1
+                },
+                {
+                    "Name": "Total",
+                    "Index": 2
+                },
+                {
+                    "Name": "Actual",
+                    "Index": 3
+                }
+            ],
+            "Data": {
+                "Matemática": [
+                    "70",
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo} == 'Matemática')"
+                ],
+                "Ciencias Experimentales": [
+                    "10",
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo} == 'Ciencias Experimentales')"
+                ]
+            }
+        },
+        "Grupos De Básico-tecnológicas": {
+            "Columns": [
+                {
+                    "Name": "SubGrupo",
+                    "Index": 1
+                },
+                {
+                    "Name": "Total",
+                    "Index": 2
+                },
+                {
+                    "Name": "Actual",
+                    "Index": 3
+                }
+            ],
+            "Data": {
+                "Programación": [
+                    60,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo} == 'Programación')"
+                ],
+                "Arquitectura, Sistemas Operativos y Redes de computadores": [
+                    30,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Arquitectura, Sistemas Operativos y Redes de computadores')"
+                ],
+                "Inteligencia Artificial y Robótica": [
+                    0,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Inteligencia Artificial y Robótica')"
+                ],
+                "Bases de Datos y Sistemas de Información": [
+                    10,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Bases de Datos y Sistemas de Información')"
+                ],
+                "Cálculo Numérico y Simbólico": [
+                    8,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Cálculo Numérico y Simbólico')"
+                ],
+                "Investigación Operativa": [
+                    10,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Investigación Operativa')"
+                ],
+                "Ingeniería de Software": [
+                    10,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Ingeniería de Software')"
+                ],
+                "Gestión en Organizaciones": [
+                    10,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Gestión en Organizaciones')"
+                ],
+                "Actividades Integradoras : Talleres, pasa talleres, pasantías y proyectos": [
+                    45,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Actividades Integradoras : Talleres, pasa talleres, pasantías y proyectos')"
+                ]
+            }
+        },
+        "Grupos De Complementarias": {
+            "Columns": [
+                {
+                    "Name": "SubGrupo",
+                    "Index": 1
+                },
+                {
+                    "Name": "Total",
+                    "Index": 2
+                },
+                {
+                    "Name": "Actual",
+                    "Index": 3
+                }
+            ],
+            "Data": {
+                "Ciencias Humanas y Sociales": [
+                    10,
+                    "=SUM.IF(${Creditos}, ${Aprovada} == TRUE AND ${SubGrupo}  == 'Ciencias Humanas y Sociales')"
+                ]
+            }
+        }
+    },
+    "Data": [
+        [
+            true,
+            "Calculo Diferencial e integral en una variavle",
+            13,
+            "1er",
+            "Básicas",
+            null
+        ],
+        [
+            true,
+            "Matematica Discreta 1",
+            9,
+            "1er",
+            "Básicas",
+            null
+        ]
+    ]
+}
+
+    ViewData()
+    
+</script> -->
+
+</html>

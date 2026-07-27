@@ -1,0 +1,113 @@
+custom-dashboard{
+    background-color: rgba(30, 143, 255, 0.1);
+    width: fit-content;
+    position: relative;
+    box-sizing: border-box;
+    margin: 1vw 0;
+    border-radius: 2vw;
+    font-size: 20px;
+    padding: 1vw;
+    overflow: hidden;
+    
+
+}
+custom-dashboard h2{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 5vw;
+    background-color: deepskyblue;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+custom-dashboard tr{
+    max-height: 10vh;
+    display: grid;
+    grid-template-rows: 100%;
+    border-bottom: white 1px solid;
+    width: fit-content;
+    background-color: aliceblue;
+
+}
+
+custom-dashboard tr td, custom-dashboard tr th{
+    border-right: white 1px solid;
+}
+custom-dashboard tr input{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+custom-dashboard tr th input{
+    text-align: center;
+    color: white;
+    font-size: 15px;
+}
+
+custom-dashboard tr th {
+    background-color:  deepskyblue;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    
+}
+
+custom-dashboard tr:nth-child(odd) {
+    background-color: lightskyblue;
+    
+}
+
+
+custom-dashboard tr:nth-child(odd)  input{
+    color: aliceblue;
+    font-weight: bold;
+    
+}
+
+custom-dashboard tr td{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+
+
+custom-dashboard tr th .thSlicer{
+    background-color: transparent;
+    width: .5vw;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    cursor: grab;
+    user-select: none;
+    
+}
+
+custom-dashboard tr th .thSlicer:active{
+    cursor: grabbing;
+}
+
+custom-dashboard > tr:last-of-type{
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    border: none;
+}
+custom-dashboard tr > td:last-of-type, custom-dashboard tr > th:last-of-type{
+    border: none;
+}
