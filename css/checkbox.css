@@ -1,77 +1,99 @@
-
 toggle-switch {
-  max-height: 10vh;
-  height: 30px;
-  width: 80px;
+  display: inline-block;
   position: relative;
-  border-radius: 22px;
-  border: 1px solid red;
+  height: 32px;
+  width: 76px;
+  border-radius: 9999px; /* Pill shape */
+  border: 1px solid var(--border-color, #334155);
+  background-color: var(--bg-card, #1e293b);
   box-sizing: border-box;
-  
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+
+/* Hover & Focus state */
+toggle-switch:hover {
+  border-color: var(--text-muted, #64748b);
+}
+
+toggle-switch:has(input[type=checkbox]:focus-visible) {
+  border-color: var(--accent-color, #38bdf8);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
+}
+
+/* Checkbox oculto pero accesible */
 toggle-switch input[type=checkbox] {
-  height: 0;
-  width: 0;
-  opacity: 0;
   position: absolute;
-  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  z-index: 20;
 }
+
 toggle-switch label {
   display: block;
   height: 100%;
   width: 100%;
-  line-height: 35px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-          box-sizing: border-box;
+  cursor: pointer;
 }
+
+/* Botón deslizante (Thumb) */
 toggle-switch::before {
   content: "";
-  height: 25px;
-  width: 25px;
+  height: 22px;
+  width: 22px;
   position: absolute;
-  left: 5px;
+  left: 4px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: red;
-  border-radius: 12px;
+  background-color: var(--text-muted, #94a3b8);
+  border-radius: 50%;
   pointer-events: none;
   z-index: 10;
-  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-sizing: border-box;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Texto de estado (OFF: NO) */
 toggle-switch::after {
   content: "NO";
   position: absolute;
-  display: block;
-  left: 40px;
-  top: 0;
-  bottom: 0;
-  font-size: 14px;
-  line-height: 30px;
-  color: red;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #64748b);
   pointer-events: none;
   z-index: 5;
-  transition: left 0.5s ease-out;
-  box-sizing: border-box;
-}
-toggle-switch:has(input[type=checkbox]:checked):before {
-  right: auto;
-  left: 45px;
-  box-sizing: border-box;
-    color: deepskyblue;
-     background-color: deepskyblue;
-}
-toggle-switch:has(input[type=checkbox]:checked):after {
-  content: "YES";
-  left: 10px;
-  box-sizing: border-box;
-  color: deepskyblue;
- 
+  transition: color 0.25s ease, right 0.25s ease, left 0.25s ease;
 }
 
-toggle-switch:has(input[type=checkbox]:checked){
-    border-color: deepskyblue;
+/* ----------------------------------------------------
+   Estado ACTIVO (CHECKED)
+---------------------------------------------------- */
+toggle-switch:has(input[type=checkbox]:checked) {
+  border-color: var(--accent-color, #38bdf8);
+  background-color: rgba(56, 189, 248, 0.08);
+}
+
+/* Desplazamiento del Thumb */
+toggle-switch:has(input[type=checkbox]:checked)::before {
+  transform: translate(44px, -50%);
+  background-color: var(--accent-color, #38bdf8);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+/* Texto de estado (ON: YES) */
+toggle-switch:has(input[type=checkbox]:checked)::after {
+  content: "YES";
+  left: 12px;
+  right: auto;
+  color: var(--accent-color, #38bdf8);
 }

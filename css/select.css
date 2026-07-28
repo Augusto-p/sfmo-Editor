@@ -1,141 +1,143 @@
 .select-box {
-    position: relative;
-    display: block;
-    width: 100%;
-    font-size: 18px;
-    border: 2px solid deepskyblue;
-    border-radius: 4px;
-    color: deepskyblue;
-    box-sizing: border-box;
-    min-height: 30px;
-    padding-right: 33px;
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-md, 6px);
+  color: var(--text-main, #f8fafc);
+  background-color: var(--bg-card, #1e293b);
+  box-sizing: border-box;
+  min-height: 32px;
+  padding-right: 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.select-box:hover {
+  border-color: var(--text-muted, #64748b);
+}
+
+.select-box:focus-within {
+  border-color: var(--accent-color, #38bdf8);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+/* Valor actual mostrado */
 .select-box .current {
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    box-sizing: border-box;
-    height: 100%;
-    min-height: 22px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
 }
-
-.select-box .current:focus-within+ul {
-    opacity: 1;
-    -webkit-animation-name: none;
-    animation-name: none;
-}
-
-
-.select-box .current:focus-within+ul label {
-    cursor: pointer;
-}
-
-.select-box:has(.current:focus-within)::after {
-    transform: rotate(225deg) translate(-6px, -6px);
-}
-
-.select-box::after {
-    content: " ";
-    background-color: transparent;
-    position: absolute;
-    top: calc(50% - 9px);
-    right: 5px;
-    transform: rotate(45deg);
-    width: 12px;
-    height: 12px;
-    border: solid 2px;
-    border-color: deepskyblue;
-    border-top: none;
-    border-left: none;
-    opacity: 1;
-    transition: 0.2s ease;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-
 
 .select-box .current .value {
-    display: flex;
-    position: relative;
-    height: 100%;
-
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .select-box .current input {
-    display: none;
+  display: none;
 }
 
 .select-box .current input:checked+p {
-    display: flex;
+  display: flex;
 }
 
 .select-box .current p {
-    display: none;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0px;
-    background-color: transparent;
-    box-sizing: border-box;
-    min-height: 30px;
-    overflow: hidden;
-    text-overflow: clip;
-    white-space: nowrap;
-    align-items: center;
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  box-sizing: border-box;
+  color: var(--text-main, #f8fafc);
+  font-size: 13px;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+/* Flecha desplegable */
+.select-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-70%) rotate(45deg);
+  width: 7px;
+  height: 7px;
+  border: solid 2px var(--text-muted, #94a3b8);
+  border-top: none;
+  border-left: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  pointer-events: none;
+}
+
+.select-box:focus-within::after {
+  transform: translateY(-30%) rotate(225deg);
+  border-color: var(--accent-color, #38bdf8);
+}
+
+/* Menú desplegable (UL) */
 .select-box ul {
-    position: absolute;
-    z-index: 99;
-    width: calc(100% + 2vw);
-    transform: translateX(-1vw);
-    box-sizing: border-box;
-    padding: 0 10px;
-    list-style: none;
-    opacity: 0;
-    -webkit-animation-name: HideList;
-    animation-name: HideList;
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: step-start;
-    animation-timing-function: step-start;
-    background-color: aliceblue;
-    overflow: hidden;
-    margin: 0;
-    margin-top: 1vh;
-    border-radius: 1vw;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.25rem 0;
+  list-style: none;
+  background-color: var(--bg-card, #1e293b);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-md, 6px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  max-height: 180px;
+  overflow-y: auto;
+  margin: 0;
+
+  /* Estado oculto */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
 }
 
+/* Mostrar menú desplegable al hacer focus */
+.select-box .current:focus-within+ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.select-box ul li {
+  margin: 0;
+  padding: 0;
+}
 
 .select-box ul label {
-    display: block;
-    padding: 10px 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    font-size: 15px;
-    color: deepskyblue;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 13px;
+  color: var(--text-muted, #94a3b8);
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: background-color 0.15s, color 0.15s;
 }
 
-.select-box ul label:hover,
-.select-box ul label:focus {
-    color: #546c84;
-    background-color: #fbfbfb;
-}
-
-
-
-
-@keyframes HideList {
-    from {
-        transform: scaleY(1);
-    }
-
-    to {
-        transform: scaleY(0);
-    }
+.select-box ul label:hover {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color, #38bdf8);
 }

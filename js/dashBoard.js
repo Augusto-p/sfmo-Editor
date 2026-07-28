@@ -40,8 +40,8 @@ class dashboard extends HTMLElement {
     MakeHeaders() {
         let trh = document.createElement("tr");
         this.columnsIndex.forEach(index => {
-
-            this.columnsWidth[index] = Math.max(window.innerWidth / 100 * 8, (this.columnsName[index].length * 20) + window.innerWidth / 100 * 2);
+            this.columnsWidth[index] = Math.max(120, (this.columnsName[index].length * 10) + 30);
+            // this.columnsWidth[index] = Math.max(window.innerWidth / 100 * 8, (this.columnsName[index].length * 20) + window.innerWidth / 100 * 2);
             let stylecolumn = document.createElement("style");
             stylecolumn.id = `dash_${this.name.replace(/\s+/g, "_")}_column_${index}_${this.columnsName[index].replaceAll(" ", "-")}`;
             stylecolumn.innerHTML = `.dash_${this.name.replace(/\s+/g, "_")}_column_${index}_${this.columnsName[index].replaceAll(" ", "-")}{
@@ -63,8 +63,6 @@ class dashboard extends HTMLElement {
             slicer.addEventListener("dragstart", (e) => { slicer_StartX = e.clientX; });
             slicer.addEventListener("dragend", (e) => {
                 let stylecolumn = document.getElementById(`dash_${this.name.replace(/\s+/g, "_")}_column_${index}_${this.columnsName[index].replaceAll(" ", "-")}`);
-                console.log();
-
                 this.columnsWidth[index] += parseFloat(e.clientX - slicer_StartX);
                 stylecolumn.innerHTML = `.dash_${this.name.replace(/\s+/g, "_")}_column_${index}_${this.columnsName[index].replaceAll(" ", "-")}{
                 width: ${this.columnsWidth[index]}px;
@@ -72,7 +70,7 @@ class dashboard extends HTMLElement {
                 slicer_StartX = null;
 
             });
-            th.appendChild(slicer)
+            th.appendChild(slicer);
             th.appendChild(input);
             trh.appendChild(th);
         });
