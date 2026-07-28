@@ -2,6 +2,7 @@
 custom-dashboard {
     background-color: var(--bg-card);
     width: fit-content;
+    height: fit-content;
     position: relative;
     box-sizing: border-box;
     border-radius: var(--radius-lg);
