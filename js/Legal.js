@@ -66,7 +66,7 @@ LegalBack_Btn.addEventListener("click", () => {
     searchParams.set("lang", language_selector.getValue());
     const searchString = new URLSearchParams(searchParams).toString();
 
-    const newUrl = `${window.location.pathname.split("/Legal/")[0]}?${searchString}${window.location.hash}`;
+    const newUrl = `${window.location.pathname.split("/Legal/")[0]}/?${searchString}${window.location.hash}`;
     window.history.pushState({}, "", newUrl);
     document.head.querySelector("title").textContent = `SFMO Editor`;
 })
