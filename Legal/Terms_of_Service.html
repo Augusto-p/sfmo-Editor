@@ -5,70 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/App/Icon/app.ico" type="image/x-icon">
-    <title></title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-        let Lang_Dictionary = {}
-        const params = Object.fromEntries(new URLSearchParams(window.location.search));
-        const Lang = (params["lang"] ?? "EN").toUpperCase() ?? "EN";
-        if (!["ES", "EN"].includes(Lang)) { "EN" }
-        fetch(`/lang/${Lang}.json`).then(res => {
-            res.json().then(data => {
-                Lang_Dictionary = data;
-                LoadLang();
-            });
-        });
-        function LoadLang() {
-            TitleLoadLang();
-            Load_Content();
-        }
-    </script>
-    <link rel="stylesheet" href="/css/legal/style.css">
 </head>
 <body>
-    <header>
-        <button id="Back_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
-            </svg>
-        </button>
-        <h1 id="Title"></h1>
-    </header>
-    <section id="ContentView"></section>
-</body>
-<script>
-    const Title = document.getElementById("Title");
-    const ContentView = document.getElementById("ContentView");
-    const Back_btn = document.getElementById("Back_btn");
-
-    function TitleLoadLang() {
-        document.head.querySelector("title").textContent = `${Lang_Dictionary["terms of service"]} - SFMO Editor`;
-        Title.textContent = Lang_Dictionary["Legal"]["Title terms of service"];
-    }
-
-
-    async function Load_Content() {
-        fetch(`/Laws/${Lang}/Terms_of_Service.md`).then(res => {
-            if (res.status == 200) {
-                return res.text();
-            }
-        }).then(data => {
-            ContentView.innerHTML = marked.parse(data);
-        });
-    }
-
-    Back_btn.addEventListener("click", () => {
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("legalref", "Terms_of_Service");
+        const searchString = new URLSearchParams(searchParams).toString();
+        const newUrl = `${window.location.pathname.split("/Legal/")[0]}/?${searchString}${window.location.hash}`;
         const link = document.createElement('a');
         link.style.opacity = 0;
-        link.href = `/?lang=${Lang}`;
+        link.href = newUrl;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-    })
-
-    LoadLang();
-</script>
+    </script>
+</body>
 
 </html>

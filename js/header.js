@@ -20,11 +20,11 @@ save_file_btn.addEventListener("click", () => {
     URL.revokeObjectURL(url);
 });
 
-privacy_policy_btn.addEventListener("click", () => { OpenLink(`/Legal/Privacy_Policy.html?lang=${Lang}`); });
+privacy_policy_btn.addEventListener("click", () => ViewPrivacyPolicy());
 
-terms_of_service_btn.addEventListener("click", () => { OpenLink(`/Legal/Terms_of_Service.html?lang=${Lang}`); });
+terms_of_service_btn.addEventListener("click", () => ViewTermsOfService());
 
-faq_btn.addEventListener("click", () => { OpenLink(`/Legal/FAQ.html?lang=${Lang}`); });
+faq_btn.addEventListener("click", () => ViewFAQ() );
 
 github_btn.addEventListener("click", () => { OpenLink(`https://github.com/Augusto-p/sfmo-Editor`); });
 
@@ -35,7 +35,7 @@ function HeaderLoadLang() {
     language_selector.setValue(Lang);
 }
 
-language_selector.init(-1, "language", (e) => {
+language_selector.init( "language", (e) => {
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set("lang", language_selector.getValue());
     const searchString = new URLSearchParams(searchParams).toString();
