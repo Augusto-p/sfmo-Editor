@@ -8,24 +8,35 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
     </style>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
+
     <script>
         let Lang_Dictionary = {}
         let Lang = "EN";
         async function getLang_Dictionary() {
             const params = Object.fromEntries(new URLSearchParams(window.location.search));
-            Lang = (params["lang"] ?? "EN").toUpperCase() ?? "EN";
+            if (params["lang"]) {
+                Lang = params["lang"];
+                window.localStorage.setItem("Lang", Lang);
+            } else {
+                Lang = window.localStorage.getItem("Lang") ?? "EN";
+                const searchParams = new URLSearchParams(window.location.search)
+                searchParams.set("lang", Lang);
+                const searchString = searchParams.toString();
+                const newUrl = `${window.location.pathname}?${searchParams.toString()}${window.location.hash}`;
+                window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
+
+            }
             if (!["ES", "EN"].includes(Lang)) { "EN" }
-            fetch(`lang/${Lang}.json`).then(res => {
-                res.json().then(data => {
-                    Lang_Dictionary = data;
-                    LoadLang();
-                });
-            });
+            let res = await fetch(`lang/${Lang}.json`);
+            let data = await res.json();
+            Lang_Dictionary = data;
+            LoadLang();
         }
-        getLang_Dictionary();
+
+
 
         function LoadLang() {
+
             HeaderLoadLang();
             BookmarkLoadLang();
             LoadFileLoadLang();
@@ -138,14 +149,36 @@
 
 </body>
 <script src="js/Legal.js"></script>
-    <script>
+
+
+<script src="js/value.js"></script>
+<script src="js/table.js"></script>
+<script src="js/select.js"></script>
+<script src="js/selectorType.js"></script>
+<script src="js/dataset.js"></script>
+<script src="js/dashBoard.js"></script>
+<script src="js/language_selector.js"></script>
+
+
+<script src="js/main.js"></script>
+<script src="js/bookmarks.js"></script>
+<script src="js/header.js"></script>
+<script src="js/datasetTree.js"></script>
+<script>
+
+    getLang_Dictionary().then(() => {
+        console.log(Lang_Dictionary);
+
+        LoadLang();
+
         const LegalParams = Object.fromEntries(new URLSearchParams(window.location.search));
         if (LegalParams["legalref"]) {
             let value = LegalParams["legalref"];
             const searchParams = new URLSearchParams(window.location.search);
             searchParams.delete("legalref")
-            const searchString = new URLSearchParams(searchParams).toString();
+            const searchString = searchParams.toString();
             const newUrl = `${window.location.pathname.split("/Legal/")[0]}/Legal/Terms_of_Service?${searchString}${window.location.hash}`;
+            window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
             switch (value) {
                 case "FAQ":
                     ViewFAQ();
@@ -161,21 +194,8 @@
             }
         }
 
-    </script>
+    })
 
-<script src="js/value.js"></script>
-<script src="js/table.js"></script>
-<script src="js/select.js"></script>
-<script src="js/selectorType.js"></script>
-<script src="js/dataset.js"></script>
-<script src="js/dashBoard.js"></script>
-<script src="js/language_selector.js"></script>
-
-
-<script src="js/main.js"></script>
-<script src="js/bookmarks.js"></script>
-<script src="js/header.js"></script>
-<script src="js/datasetTree.js"></script>
-<script>LoadLang();</script>
+</script>
 
 </html>
