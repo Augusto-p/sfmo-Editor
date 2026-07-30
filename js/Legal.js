@@ -11,7 +11,7 @@ function ViewFAQ() {
     }
     const searchString = new URLSearchParams(window.location.search).toString();
     const newUrl = `${window.location.pathname.split("/Legal/")[0]}/Legal/FAQ?${searchString}${window.location.hash}`;
-    window.history.pushState({}, "", newUrl);
+    window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
     document.head.querySelector("title").textContent = `${Lang_Dictionary["FAQ"]} - SFMO Editor`;
     LegalTitle.textContent = Lang_Dictionary["Legal"]["Title FAQ"];
     Load_Legal_Content("FAQ");
@@ -25,7 +25,7 @@ function ViewPrivacyPolicy() {
     }
     const searchString = new URLSearchParams(window.location.search).toString();
     const newUrl = `${window.location.pathname.split("/Legal/")[0]}/Legal/Privacy_Policy?${searchString}${window.location.hash}`;
-    window.history.pushState({}, "", newUrl);
+    window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
     document.head.querySelector("title").textContent = `${Lang_Dictionary["privacy policy"]} - SFMO Editor`;
     LegalTitle.textContent = Lang_Dictionary["Legal"]["Title privacy policy"];
     Load_Legal_Content("Privacy_Policy");
@@ -40,7 +40,7 @@ function ViewTermsOfService() {
     const searchString = new URLSearchParams(window.location.search).toString();
 
     const newUrl = `${window.location.pathname.split("/Legal/")[0]}/Legal/Terms_of_Service?${searchString}${window.location.hash}`;
-    window.history.pushState({}, "", newUrl);
+    window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
     document.head.querySelector("title").textContent = `${Lang_Dictionary["terms of service"]} - SFMO Editor`;
     LegalTitle.textContent = Lang_Dictionary["Legal"]["Title terms of service"];
     Load_Legal_Content("Terms_of_Service");
