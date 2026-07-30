@@ -47,7 +47,7 @@ function ViewTermsOfService() {
 }
 
 async function Load_Legal_Content(name) {
-    fetch(`/Laws/${Lang}/${name}.md`).then(res => {
+    fetch(`Laws/${Lang}/${name}.md`).then(res => {
         if (res.status == 200) {
             return res.text();
         }
