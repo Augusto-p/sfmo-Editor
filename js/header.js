@@ -46,12 +46,12 @@ language_selector.init(-1, "language", (e) => {
 });
 
 language_selector.setOptions([
-    { code: "en", name: "English", flag: "/App/Flags/uk.svg" },
-    { code: "es", name: "Español", flag: "/App/Flags/es.svg" },
-    { code: "pt", name: "Português", flag: "/App/Flags/pt.svg" },
-    { code: "fr", name: "Française", flag: "/App/Flags/fr.svg" },
-    { code: "it", name: "Italiano", flag: "/App/Flags/it.svg" },
-    { code: "de", name: "Deutsche", flag: "/App/Flags/de.svg" },
-    { code: "ru", name: "Русский", flag: "/App/Flags/ru.svg" },
+    { code: "en", name: "English", flag: "App/Flags/uk.svg" },
+    { code: "es", name: "Español", flag: "App/Flags/es.svg" },
+    { code: "pt", name: "Português", flag: "App/Flags/pt.svg" },
+    { code: "fr", name: "Française", flag: "App/Flags/fr.svg" },
+    { code: "it", name: "Italiano", flag: "App/Flags/it.svg" },
+    { code: "de", name: "Deutsche", flag: "App/Flags/de.svg" },
+    { code: "ru", name: "Русский", flag: "App/Flags/ru.svg" },
 
 ]);

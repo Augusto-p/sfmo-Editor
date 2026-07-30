@@ -14,7 +14,7 @@
             const params = Object.fromEntries(new URLSearchParams(window.location.search));
             Lang = (params["lang"]?? "EN").toUpperCase() ?? "EN";
             if (!["ES", "EN"].includes(Lang)) {"EN"}
-            fetch(`/lang/${Lang}.json`).then(res=>{res.json().then(data=>{Lang_Dictionary = data;
+            fetch(`lang/${Lang}.json`).then(res=>{res.json().then(data=>{Lang_Dictionary = data;
                 LoadLang();
             });});    
         }
