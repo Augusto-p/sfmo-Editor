@@ -4,8 +4,13 @@ let columnsName = [];
 const inputFile = document.getElementById("FileLoad");
 const SaveButton = document.getElementById("Save");
 const dataView = document.getElementById("Data");
+const engine = new FormulaEngine(dataView);
 const dashboardView = document.getElementById("Dashboards");
-inputFile.addEventListener("change", (e)=>{
+const datasetView =document.getElementById("DataSets");
+const body = document.body;
+let DataSet = null;
+
+inputFile.addEventListener("change", (e) => {
     const file = e.target.files[0];
 
     if (file && !file.name.toLowerCase().endsWith(".sfmo")) {
@@ -19,26 +24,20 @@ inputFile.addEventListener("change", (e)=>{
     reader.onload = (event) => {
         const contenido = event.target.result;
         FileData = JSON.parse(contenido)
+
         ViewData()
     };
 
     reader.readAsText(file);
 })
 
-
-
-
-
-
-
-
-
-
 function ViewData() {
-    if (!FileData) {return}
+    if (!FileData) { return }
+    dashboardView.innerHTML = "";
+    datasetView.innerHTML = "";
+    dataView.clear();
+
     document.body.setAttribute("data-Mode", "Load");
-    // dataView.innerHTML = "";
-    // LoaD Columns 
     let columns = FileData["Columns"];
     let columnsType = []
     let columnsName = []
@@ -53,55 +52,23 @@ function ViewData() {
         let dash = document.createElement("custom-dashboard");
         dash.init(name, FileData["Dashboards"][name])
         dashboardView.appendChild(dash);
-        
     });
+    DataSet = new Datasets(FileData["Datasets"], datasetView);
 }
 
-
-
-
-
-
-
-
-
-
-
-function toggleDahboards() {
-    if (document.body.getAttribute("data-mode") != "Dash") {
-        document.body.setAttribute("data-mode", "Dash");
-        document.querySelectorAll("custom-dashboard").forEach(element => {
-            element.reload()
-        });
-    }else{
-        document.body.setAttribute("data-mode", "Load");
-    } 
-}
-
-document.getElementById("Bookmark").addEventListener("click", ()=>{
-    toggleDahboards()
-})
-
-SaveButton.addEventListener("click", ()=>{
-    FileData["Columns"] = dataView.getColumns();
-    FileData["Data"] = dataView.getData();
-    const blob = new Blob([JSON.stringify(FileData)], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
+function OpenLink(url, download = null) {
     const link = document.createElement('a');
+    link.style.opacity = 0;
     link.href = url;
-    link.download = inputFile.files[0].name;
-  
+    if (download != null) {link.download = download;}
     document.body.appendChild(link);
-  link.click();
-
-  // 4. Limpiar el elemento y liberar la memoria
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-    console.log(inputFile.files[0].name);
-    console.log(FileData);
+    link.click();
+    document.body.removeChild(link);
     
-    
-})
+}
 
 
-const engine = new FormulaEngine(dataView);
+function LoadFileLoadLang() {
+    inputFile.parentElement.querySelector("span").textContent = Lang_Dictionary["drag & drop files here to upload"];
+    inputFile.parentElement.querySelector("button").textContent = Lang_Dictionary["select files to upload"];
+}

@@ -44,13 +44,13 @@
     const Back_btn = document.getElementById("Back_btn");
 
     function TitleLoadLang() {
-        document.head.querySelector("title").textContent = `${Lang_Dictionary["FAQ"]} - SFMO Editor`;
-        Title.textContent = Lang_Dictionary["Legal"]["Title FAQ"];
+        document.head.querySelector("title").textContent = `${Lang_Dictionary["terms of service"]} - SFMO Editor`;
+        Title.textContent = Lang_Dictionary["Legal"]["Title terms of service"];
     }
 
 
     async function Load_Content() {
-        fetch(`/Laws/${Lang}/FAQ.md`).then(res => {
+        fetch(`/Laws/${Lang}/Terms_of_Service.md`).then(res => {
             if (res.status == 200) {
                 return res.text();
             }

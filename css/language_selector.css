@@ -1,0 +1,148 @@
+.language-select-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  font-family: inherit;
+  border-radius: var(--radius-md, 6px);
+  color: var(--text-main, #f8fafc);
+  box-sizing: border-box;
+  min-height: 36px;
+  padding-right: 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+
+/* Contenedor Flex para alinear la Bandera + Texto */
+.language-select-box .option-content {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ===================================================
+   TRUCO CSS: CONVERTIR CUALQUIER SVG EN CÍRCULO PERFECTO
+   =================================================== */
+.language-select-box .flag-icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 50%;          /* Lo hace completamente redondo */
+  object-fit: cover;            /* Escala el SVG sin deformar la proporción */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15); /* Borde sutil */
+  background-color: #0f172a;
+}
+
+/* Valor Seleccionado Atual */
+.language-select-box .current {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.language-select-box .current .value {
+    display: none;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.language-select-box .current input {
+  display: none;
+}
+
+.language-select-box .current input:checked + .option-content {
+  display: flex;
+  justify-content: center;
+}
+.language-select-box .current .value:has(input:checked){
+    display: flex;
+}
+
+.language-select-box .current .option-content {
+  display: none;
+}
+
+
+/* Flecha desplegable */
+.language-select-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-70%) rotate(45deg);
+  width: 6px;
+  height: 6px;
+  border: solid 2px var(--text-muted, #94a3b8);
+  border-top: none;
+  border-left: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  pointer-events: none;
+}
+
+.language-select-box:focus-within::after {
+  transform: translateY(-30%) rotate(225deg);
+  border-color: var(--accent-color, #38bdf8);
+}
+
+/* Lista Desplegable (UL) */
+.language-select-box ul {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  width: max-content;
+  box-sizing: border-box;
+  padding: 0.25rem 0;
+  list-style: none;
+  background-color: var(--bg-card, #1e293b);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-md, 6px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.language-select-box .current:focus-within + ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-select-box ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.language-select-box ul label {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: var(--text-muted, #94a3b8);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.language-select-box ul label:hover {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color, #38bdf8);
+}

@@ -1,0 +1,16 @@
+{
+    "new row": "Nueva Fila",
+    "dashboards": "Paneles de Control",
+    "datasets": "conjuntos de datos",
+    "columns": "Columnas",
+    "privacy policy": "Política de Privacidad",
+    "terms of service": "Términos de Servicio",
+    "FAQ": "FAQ",
+    "drag & drop files here to upload": "Arrastra y Suelta los Archivos aquí para Subirlos.",
+    "select files to upload": "Seleccione los Archivos que desea Cargar.",
+    "Legal": {
+        "Title FAQ": "Preguntas Frecuentes (FAQ) - SFMO Editor",
+        "Title terms of service": "Términos de Servicio de SFMO Editor",
+        "Title privacy policy": "Política de Privacidad de SFMO Editor"
+    }
+}

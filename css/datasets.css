@@ -1,0 +1,205 @@
+/* Contenedor Principal */
+#DataSets {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: var(--bg-dashboard-container, #0f172a);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 100;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2.5rem 3rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body[data-Mode*="DataSets"] #DataSets {
+    transform: translateX(-100vw);
+}
+
+#BookmarkDataSets.Bookmark {
+    top: 75vh;
+}
+
+/* Estrutura Grid de cada Nodo */
+dataset-tree-node {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: start;
+    gap: 1.5rem;
+    /* Espacio exacto entre el nivel actual y el siguiente */
+    padding-top: 0.5rem;
+}
+
+/* Tarjeta del Nodo (.level) */
+dataset-tree-node .level {
+    position: relative;
+    width: 100%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-card, #1e293b);
+    border: 1px solid var(--border-color, #334155);
+    border-radius: var(--radius-md, 8px);
+    padding: 0 0.5rem 0 0.75rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+dataset-tree-node .level:hover {
+    border-color: var(--text-muted, #64748b);
+    background-color: #243347;
+}
+
+dataset-tree-node .level:has(input:focus) {
+    border-color: var(--accent-color, #38bdf8);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+/* Reset para el botón + New */
+dataset-tree-node.is-new-btn-node .level,
+dataset-tree-node.is-new-btn-node .level:hover {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Input editable */
+dataset-tree-node input {
+    text-align: left;
+    color: var(--text-main, #f8fafc);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Botón de borrar */
+dataset-tree-node .delete-node-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+dataset-tree-node .level:hover .delete-node-btn {
+    opacity: 0.7;
+}
+
+dataset-tree-node .delete-node-btn:hover {
+    opacity: 1 !important;
+}
+
+/* Contenedor del siguiente nivel */
+dataset-tree-node .next_level {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----------------------------------------------------
+   SISTEMA DE CONEXIÓN DINÁMICA (LÍNEAS)
+---------------------------------------------------- */
+
+/* 1. Línea horizontal que sale del padre hacia la derecha */
+dataset-tree-node:has(> .next_level)>.level::after {
+    content: "";
+    position: absolute;
+    right: -0.6rem;
+    top: calc(19px - 0.05rem); /* Centro vertical del recuadro (38px / 2) */
+    width: 1rem;
+    height: 2px;
+    background-color: var(--border-color, #334155);
+    z-index: -1;
+}
+
+/* 2. Línea horizontal que entra a cada hijo desde la izquierda */
+dataset-tree-node .next_level>dataset-tree-node::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 19px;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--border-color, #334155);
+    z-index: 2;
+}
+
+/* 3. Tramo de línea vertical para cada hijo */
+dataset-tree-node .next_level>dataset-tree-node::after {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color, #334155);
+    z-index: 1;
+}
+
+/* Ajuste del tramo vertical para el PRIMER hijo de una rama */
+dataset-tree-node .next_level>dataset-tree-node:first-child::after {
+    top: 19px;
+}
+
+/* Ajuste del tramo vertical para el ÚLTIMO hijo de una rama */
+dataset-tree-node .next_level>dataset-tree-node:last-child::after {
+    bottom: calc(100% - 19px);
+}
+
+/* Si es HIJO ÚNICO en la rama */
+dataset-tree-node .next_level>dataset-tree-node:only-child::after {
+    display: none;
+}
+
+/* Botón + Agregar Nodo */
+dataset-tree-node button:not(.delete-node-btn) {
+    text-align: center;
+    color: var(--accent-color, #38bdf8);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: rgba(56, 189, 248, 0.06);
+    border: 1px dashed var(--accent-color, #38bdf8);
+    border-radius: var(--radius-md, 8px);
+    width: 100%;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+dataset-tree-node button:not(.delete-node-btn):hover {
+    background-color: rgba(56, 189, 248, 0.18);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+
+
+/* 1. Ilumina el borde del nodo actual y de todos sus ancestros hasta la raíz */
+dataset-tree-node:has(:hover)>.level {
+    background-color: rgba(56, 189, 248, 0.18);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}

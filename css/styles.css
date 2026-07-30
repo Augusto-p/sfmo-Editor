@@ -10,6 +10,7 @@
   --border-color: #334155;
   --radius-lg: 12px;
   --radius-md: 8px;
+  --line-active-color: #f472b6; /* Rosa / Pink */
   --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
 }
 
@@ -46,7 +47,7 @@ body:not([data-Mode="NoLoad"]) #LoadFile {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 200;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   box-sizing: border-box;
   padding: 2rem;
@@ -140,41 +141,75 @@ body:not([data-Mode="NoLoad"]) #LoadFile {
   box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
 }
 
-#Save {
-  width: 36px;
-  height: 36px;
+header{
   position: absolute;
   top: 0;
-  left: 0;
-  box-sizing: border-box;
-  padding: 8px;
+  left: 20vw;
+  right: 20vw;
+  cursor: default;
+  width: 60vw;
+  padding: 0;
   fill: var(--text-main, #f8fafc);
   background-color: var(--bg-header, #334155);
   border-bottom-right-radius: var(--radius-md, 8px);
+  border-bottom-left-radius: var(--radius-md, 8px);
   border: 1px solid var(--border-color, #475569);
   border-top: none;
   border-left: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, fill 0.2s ease, box-shadow 0.2s ease;
-  z-index: 101;
+  z-index: 201;
+  height: 36px;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: repeat(3, 36px) repeat(3, 1fr) 36px 60px 70px;
+  /* overflow: hidden; */
+}
+
+header button{
+  width: 100%;
+  height: 36px;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  grid-row: 1;
+  box-sizing: border-box;
+  padding: 8px;
+  fill: var(--text-main, #f8fafc);
+  color: var(--text-main, #f8fafc);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, fill 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 1;
 }
 
-#Save svg {
+header button svg{
   width: 100%;
   height: 100%;
   transition: transform 0.15s ease;
 }
 
-#Save:hover {
+header button:hover{
   background-color: var(--accent-color, #38bdf8);
   fill: #0f172a;
 }
 
-#Save:active svg {
+header button:active svg {
   transform: scale(0.9);
+}
+#GitHub_btn{
+  grid-column: 7/9;
+}
+
+#GitHub_btn path{
+  fill: var(--text-main, #f8fafc);
+}
+
+header button:first-of-type:hover{
+  border-bottom-left-radius: var(--radius-md, 8px);
 }
 
 /* Scrollbar Personalizada */
@@ -199,4 +234,10 @@ body:not([data-Mode="NoLoad"]) #LoadFile {
 
 #nowRow {
   min-height: 5vh;
+}
+
+body[data-Mode="NoLoad"] #Save_file_btn{
+  pointer-events: none;
+  opacity: 0;
+  cursor: default;
 }

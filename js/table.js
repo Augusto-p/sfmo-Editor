@@ -21,11 +21,30 @@ class viewData extends HTMLElement {
             }`;
         });
 
-
-
     }
 
+    clear(){
+        this.columnsName = [];
+        this.columnsType = [];
+        this.columnsWidth = [];
+        this.columnsIndex = [];
+        this.data = [];
+        this.innerHTML = "";
+    }
+
+    LoadLang(){
+        let style = this.querySelector("style#LanguageTable");
+        if (!style) {
+            style = document.createElement("style");
+            style.id = "LanguageTable";
+            this.appendChild(style);
+        }
+        style.innerHTML = `view-data #nowRow td::after {content: "+ ${Lang_Dictionary["new row"]}";`
+    }
+
+
     init(columns = [], data = []) {
+        this.LoadLang()
         columns.forEach((node, index) => {
             this.columnsType.push(node["Type"])
             this.columnsName.push(node["Name"]);

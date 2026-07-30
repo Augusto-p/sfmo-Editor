@@ -1,0 +1,23 @@
+/* Contenedor Principal */
+#Columns {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: var(--bg-dashboard-container, #0f172a);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 100;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2.5rem 3rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body[data-Mode*="Columns"] #Columns {
+    transform: translateX(-100vw);
+}
+
+#BookmarkColumns.Bookmark {
+    top: 15vh;
+}

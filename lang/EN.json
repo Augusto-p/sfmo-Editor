@@ -1,0 +1,16 @@
+{
+    "new row": "New Row",
+    "dashboards": "Dashboards",
+    "datasets": "datasets",
+    "columns": "Columns",
+    "privacy policy": "Privacy Policy",
+    "terms of service": "Terms of Service",
+    "FAQ": "FAQ",
+    "drag & drop files here to upload": "Drag & Drop Files Here to Upload",
+    "select files to upload": "Select files to Upload",
+    "Legal": {
+        "Title FAQ": "Frequently Asked Questions (FQA) - SFMO Editor",
+        "Title terms of service": "Terms of Service for SFMO Editor",
+        "Title privacy policy": "Privacy Policy for SFMO Editor"
+    }
+}
