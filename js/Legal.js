@@ -47,7 +47,7 @@ function ViewTermsOfService() {
 }
 
 async function Load_Legal_Content(name) {
-    fetch(`${window.location.pathname.split("/Legal/")[0]}Laws/${Lang}/${name}.md`).then(res => {
+    fetch(`${window.location.pathname.split("/Legal/")[0]}/Laws/${Lang}/${name}.md`.replaceAll("//", "/")).then(res => {
         if (res.status == 200) {
             return res.text();
         }
