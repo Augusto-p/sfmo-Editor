@@ -5,6 +5,7 @@ const inputFile = document.getElementById("FileLoad");
 const SaveButton = document.getElementById("Save");
 const dataView = document.getElementById("Data");
 const engine = new FormulaEngine(dataView);
+const columns_editor=document.querySelector("columns-editor")
 const dashboardView = document.getElementById("Dashboards");
 const datasetView =document.getElementById("DataSets");
 const body = document.body;
@@ -38,16 +39,10 @@ function ViewData() {
     dataView.clear();
 
     document.body.setAttribute("data-Mode", "Load");
-    let columns = FileData["Columns"];
-    let columnsType = []
-    let columnsName = []
-    columns.forEach((node, index) => {
-        columnsType.push(node["Type"])
-        columnsName.push(node["Name"])
-    });
+    
 
-    dataView.init(FileData["Columns"], FileData["Data"]);
-
+    dataView.init(FileData);
+    document.querySelector("columns-editor").init(FileData, dataView);
     Object.keys(FileData["Dashboards"]).forEach(name => {
         let dash = document.createElement("custom-dashboard");
         dash.init(name, FileData["Dashboards"][name])

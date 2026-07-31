@@ -36,7 +36,7 @@
 }
 
 .select-box .current .value {
-  display: flex;
+  display: none;
   position: relative;
   height: 100%;
   width: 100%;
@@ -49,7 +49,9 @@
 .select-box .current input:checked+p {
   display: flex;
 }
-
+.select-box .current .value:has(input:checked){
+    display: flex;
+}
 .select-box .current p {
   display: none;
   width: 100%;

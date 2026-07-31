@@ -6,6 +6,7 @@ class viewData extends HTMLElement {
         this.columnsWidth = [];
         this.columnsIndex = [];
         this.data = [];
+        this.FileData = null;
         window.addEventListener('resize', () => {
             this.rezise()
         })
@@ -43,19 +44,26 @@ class viewData extends HTMLElement {
     }
 
 
-    init(columns = [], data = []) {
-        this.LoadLang()
-        columns.forEach((node, index) => {
+    init(FileData) {
+        this.LoadLang();
+        this.FileData = FileData;
+        let columns_size = FileData["Columns"].length;
+        FileData["Columns"].forEach((node, index) => {
             this.columnsType.push(node["Type"])
             this.columnsName.push(node["Name"]);
             this.columnsIndex[node["Index"] - 1] = index;
-            this.columnsWidth.push(Math.max(window.innerWidth / 10, window.innerWidth / columns.length))
+            this.columnsWidth.push(Math.max(window.innerWidth / 10, window.innerWidth / columns_size))
         })
 
-        this.data = data;
-        this.MakeHeaders();
+        this.data = FileData["Data"];
+        this.appendChild(this.MakeHeaders());
         this.LoadData();
         this.newRow()
+    }
+
+    reload(){
+        this.clear();
+        this.init(this.FileData);
     }
 
     MakeHeaders() {
@@ -94,7 +102,8 @@ class viewData extends HTMLElement {
             trh.appendChild(th);
         });
         trh.style.gridTemplateColumns = `repeat(${this.columnsType.length},auto)`
-        this.appendChild(trh);
+        return trh;
+        
     }
 
     LoadData() {

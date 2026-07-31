@@ -12,5 +12,22 @@
         "Title FAQ": "Frequently Asked Questions (FQA) - SFMO Editor",
         "Title terms of service": "Terms of Service for SFMO Editor",
         "Title privacy policy": "Privacy Policy for SFMO Editor"
+    },
+    "columns_editor": {
+        "names": {
+            "index": "Index",
+            "name": "Name",
+            "type": "Type",
+            "reference": "Reference"
+        },
+        "types":{
+            "boolean": "Boolean",
+            "number": "Number",
+            "text": "Text",
+            "reference": "Reference"
+            
+        },
+        "reference_help": "> **Syntax:** `!…![Column]Dataset`\n>\n> Each `!` represents a dataset level. Starting from the second level, the column containing the reference to the previous level must be specified inside `[]`. The reference column must have a lower index than the current column.",
+        "new_column": "Nueva Column"
     }
 }

@@ -32,15 +32,14 @@
             Lang_Dictionary = data;
             LoadLang();
         }
-
-
-
         function LoadLang() {
             HeaderLoadLang();
             BookmarkLoadLang();
             LoadFileLoadLang();
+            columns_editor.LoadLang();
         }
     </script>
+
 
 
     <link rel="stylesheet" href="css/checkbox.css">
@@ -52,15 +51,15 @@
     <link rel="stylesheet" href="css/bookmarks.css">
     <link rel="stylesheet" href="css/datasets.css">
     <link rel="stylesheet" href="css/columns.css">
+    <link rel="stylesheet" href="css/help_tooltip.css">
     <link rel="stylesheet" href="css/language_selector.css">
+    <link rel="stylesheet" href="css/makedown.css">
     <link rel="shortcut icon" href="App/Icon/app.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/legal/style.css">
-
-
     <title>SFMO Editor</title>
 </head>
 
-<body data-mode="NoLoad">
+<body data-mode="Load">
     <header>
         <button id="New_File_btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -122,13 +121,12 @@
     <view-data id="Data"></view-data>
 
     <div class="Bookmark" id="BookmarkDash"><span>Dashboards</span></div>
-
     <div class="Bookmark" id="BookmarkDataSets"><span>DataSets</span></div>
     <div class="Bookmark" id="BookmarkColumns"><span>Columns</span></div>
 
     <section id="Dashboards"></section>
     <section id="DataSets"></section>
-    <section id="Columns"></section>
+    <section id="Columns"> <columns-editor></columns-editor></section>
 
 
 
@@ -157,16 +155,16 @@
 <script src="js/dataset.js"></script>
 <script src="js/dashBoard.js"></script>
 <script src="js/language_selector.js"></script>
-
+<script src="js/help_tooltip.js"></script>
 
 <script src="js/main.js"></script>
 <script src="js/bookmarks.js"></script>
+<script src="js/columns.js"></script>
 <script src="js/header.js"></script>
 <script src="js/datasetTree.js"></script>
 <script>
 
     getLang_Dictionary().then(() => {
-        console.log(Lang_Dictionary);
 
         LoadLang();
 
@@ -194,7 +192,6 @@
         }
 
     })
-
 </script>
 
 </html>
