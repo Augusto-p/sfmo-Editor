@@ -97,6 +97,9 @@ dataset-tree-node .delete-node-btn {
     padding: 0 4px;
     opacity: 0;
     transition: opacity 0.2s ease;
+        display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 dataset-tree-node .level:hover .delete-node-btn {

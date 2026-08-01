@@ -29,5 +29,11 @@
         },
         "reference_help": "> **Sintaxis:** `!…![Columna]Dataset` \n>\n> Cada `!` indica un nivel del **dataset**. A partir del segundo nivel, debe especificarse entre `[]` la columna que contiene la referencia al nivel anterior. La columna de referencia debe tener un índice menor que la columna actual.\n",
         "new_column": "Nueva Columna"
-    }
+    },
+    "dashboards_kebab_menu":{
+        "new_column": "Nueva Columna",
+        "new_row": "Nueva Fila",
+        "delete": "Eliminar"
+    },
+    "dashboards_new": "Nuevo Paneles de Control"
 }

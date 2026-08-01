@@ -7,6 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
     </style>
+    <script src="libs/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script>
@@ -37,6 +38,8 @@
             BookmarkLoadLang();
             LoadFileLoadLang();
             columns_editor.LoadLang();
+            document.querySelectorAll("custom-dashboard").forEach(e => { e.LoadLang();});
+            dashboard_new_LoadLang();
         }
     </script>
 
@@ -51,6 +54,7 @@
     <link rel="stylesheet" href="css/bookmarks.css">
     <link rel="stylesheet" href="css/datasets.css">
     <link rel="stylesheet" href="css/columns.css">
+    <link rel="stylesheet" href="css/kebab_menu.css">
     <link rel="stylesheet" href="css/help_tooltip.css">
     <link rel="stylesheet" href="css/language_selector.css">
     <link rel="stylesheet" href="css/makedown.css">
@@ -59,7 +63,7 @@
     <title>SFMO Editor</title>
 </head>
 
-<body data-mode="Load">
+<body data-mode="NoLoad">
     <header>
         <button id="New_File_btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -124,10 +128,12 @@
     <div class="Bookmark" id="BookmarkDataSets"><span>DataSets</span></div>
     <div class="Bookmark" id="BookmarkColumns"><span>Columns</span></div>
 
-    <section id="Dashboards"></section>
+    <section id="Dashboards">
+    </section>
     <section id="DataSets"></section>
     <section id="Columns"> <columns-editor></columns-editor></section>
 
+    <button id="dashboard_new"></button>
 
 
     <section id="Legal">
@@ -156,6 +162,7 @@
 <script src="js/dashBoard.js"></script>
 <script src="js/language_selector.js"></script>
 <script src="js/help_tooltip.js"></script>
+<script src="js/kebab_menu.js"></script>
 
 <script src="js/main.js"></script>
 <script src="js/bookmarks.js"></script>
@@ -193,5 +200,5 @@
 
     })
 </script>
-
+<!-- <script src="test.js"></script> -->
 </html>

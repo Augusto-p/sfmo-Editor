@@ -8,7 +8,7 @@
     position: relative;
     z-index: 99;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 2rem 3rem;
+    padding: 50px 3rem;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
@@ -22,7 +22,67 @@ body[data-Mode*="Dash"] #Dashboards {
     transform: translateX(-100vw);
 }
 
-
-#BookmarkDash.Bookmark{
+#BookmarkDash.Bookmark {
     top: 45vh;
+}
+
+#dashboard_new {
+  position: absolute;
+  width: fit-content;
+  height: 38px; /* Cambiado a px/rem para evitar deformaciones en pantallas pequeñas */
+  padding: 0 1.25rem;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Espacio si decides agregarle un icono */
+
+  background-color: var(--bg-card, #1e293b);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-md, 8px); /* Esquinas redondeadas modernas */
+  
+  color: var(--text-muted, #94a3b8);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  z-index: 10000;
+  bottom: 2rem;    /* Distancia desde el borde inferior */
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(3rem + 100%));
+
+  /* Transición fluida de propiedades específicas */
+  transition: background-color 0.2s ease, 
+              color 0.2s ease, 
+              border-color 0.2s ease, 
+              box-shadow 0.2s ease, 
+              transform 0.4s ease;
+}
+
+/* Hover: Fondo cian, texto oscuro para contraste perfecto y brillo sutil */
+#dashboard_new:hover {
+  color: #0f172a; /* Texto oscuro para máxima legibilidad sobre el color cian */
+  background-color: var(--accent-color, #38bdf8);
+  border-color: var(--accent-color, #38bdf8);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+/* Focus accesibilidad */
+#dashboard_new:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg-dashboard-container, #0f172a), 
+              0 0 0 4px var(--accent-color, #38bdf8);
+}
+
+/* Feedback al hacer clic */
+#dashboard_new:active {
+  transform: scale(0.96);
+}
+
+body[data-Mode*="Dash"] #dashboard_new {
+    transform: translateX(-50%);
 }

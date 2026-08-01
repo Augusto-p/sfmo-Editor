@@ -7,7 +7,22 @@ const faq_btn = document.getElementById("FAQ_btn");
 const github_btn = document.getElementById("GitHub_btn");
 const language_selector = document.querySelector("language-selector");
 
-new_file_btn.addEventListener("click", () => { });
+new_file_btn.addEventListener("click", () => {
+    if (FileData == null) {
+        FileData = {
+        "Columns": [{
+            "Name": "",
+            "Index": 1,
+            "Type": "text"
+        }],
+        "Datasets": {},
+        "Dashboards": {},
+        "Data": []
+    }
+    ViewData();    
+    }
+    
+ });
 
 open_file_btn.addEventListener("click", () => inputFile.click());
 

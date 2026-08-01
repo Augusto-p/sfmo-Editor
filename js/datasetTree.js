@@ -57,7 +57,6 @@ class DataSetTreeNode extends HTMLElement {
             const deleteBtn = document.createElement("button");
             deleteBtn.classList.add("delete-node-btn");
             deleteBtn.innerHTML = "&times;";
-            deleteBtn.title = "Eliminar nodo";
             deleteBtn.onclick = (e) => {
                 this.graph.deleteValue(this.getPath());
                 e.stopPropagation();

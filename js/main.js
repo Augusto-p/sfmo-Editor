@@ -8,6 +8,8 @@ const engine = new FormulaEngine(dataView);
 const columns_editor=document.querySelector("columns-editor")
 const dashboardView = document.getElementById("Dashboards");
 const datasetView =document.getElementById("DataSets");
+let dashboard_new = document.getElementById("dashboard_new");
+
 const body = document.body;
 let DataSet = null;
 
@@ -45,7 +47,7 @@ function ViewData() {
     document.querySelector("columns-editor").init(FileData, dataView);
     Object.keys(FileData["Dashboards"]).forEach(name => {
         let dash = document.createElement("custom-dashboard");
-        dash.init(name, FileData["Dashboards"][name])
+        dash.init(FileData, name, FileData["Dashboards"][name])
         dashboardView.appendChild(dash);
     });
     DataSet = new Datasets(FileData["Datasets"], datasetView);
@@ -67,3 +69,4 @@ function LoadFileLoadLang() {
     inputFile.parentElement.querySelector("span").textContent = Lang_Dictionary["drag & drop files here to upload"];
     inputFile.parentElement.querySelector("button").textContent = Lang_Dictionary["select files to upload"];
 }
+

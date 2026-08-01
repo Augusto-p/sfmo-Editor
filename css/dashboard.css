@@ -8,7 +8,6 @@ custom-dashboard {
     border-radius: var(--radius-lg);
     font-size: 14px;
     padding: 0;
-    overflow: hidden;
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
     display: flex;
@@ -16,20 +15,53 @@ custom-dashboard {
 }
 
 /* Título de la tabla */
-custom-dashboard h2 {
+custom-dashboard input.Name {
     margin: 0;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     width: 100%;
     box-sizing: border-box;
+    flex: 1;
+    min-width: 0;
     background-color: var(--bg-card);
+    color: var(--text-main);
+    cursor: default;
     font-size: 1.25rem;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-main);
     letter-spacing: -0.025em;
+
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    outline: none;
+    border-radius: 0;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+
+    appearance: none;
+    -webkit-appearance: none;
+    
+
+    font-family: inherit;
+    line-height: normal;
 }
+
+custom-dashboard input.Name:focus {
+    cursor: text;
+}
+
+custom-dashboard th input {
+    cursor: default;
+}
+
+custom-dashboard th input:focus {
+    cursor: text;
+}
+
+custom-dashboard tr br {
+    grid-column: 1;
+    user-select: none;
+    opacity: 0;
+}
+
 
 /* Filas y celdas */
 custom-dashboard tr {
@@ -41,7 +73,7 @@ custom-dashboard tr {
     transition: background-color 0.15s ease;
 }
 
-custom-dashboard tr:hover {
+custom-dashboard tr:has(td):hover {
     background-color: rgba(255, 255, 255, 0.03);
 }
 
@@ -49,6 +81,10 @@ custom-dashboard tr td,
 custom-dashboard tr th {
     border-right: 1px solid var(--border-color);
     box-sizing: border-box;
+}
+
+custom-dashboard tr:has(th) {
+    background-color: var(--bg-header) !important;
 }
 
 /* Encabezados (TH) */
@@ -129,4 +165,71 @@ custom-dashboard>tr:last-of-type {
 custom-dashboard tr>td:last-of-type,
 custom-dashboard tr>th:last-of-type {
     border-right: none;
+}
+
+custom-dashboard tr .delete-row-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+custom-dashboard tr:hover .delete-row-btn {
+    opacity: 0.7;
+}
+
+custom-dashboard tr .delete-row-btn:hover {
+    opacity: 1 !important;
+}
+
+custom-dashboard tr th .delete-col-btn{
+background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 4px;
+}
+
+custom-dashboard tr th:hover .delete-col-btn {
+    opacity: 0.7;
+}
+
+custom-dashboard tr th .delete-col-btn:hover {
+    opacity: 1 !important;
+}
+custom-dashboard tr th:first-of-type .delete-col-btn{
+    display: none;
+}
+
+custom-dashboard tr:last-of-type{
+    border-bottom-left-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
+}
+
+custom-dashboard kebab-menu{
+    position: absolute;
+    top: 0;
+    right: 0;
 }

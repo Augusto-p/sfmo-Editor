@@ -30,4 +30,12 @@
         "reference_help": "> **Syntax:** `!…![Column]Dataset`\n>\n> Each `!` represents a dataset level. Starting from the second level, the column containing the reference to the previous level must be specified inside `[]`. The reference column must have a lower index than the current column.",
         "new_column": "Nueva Column"
     }
+    ,
+    "dashboards_kebab_menu":{
+        "new_column": "Nueva Column",
+        "new_row": "New Row",
+        "delete": "Delete"
+    }
+    ,
+    "dashboards_new": "New Dashboards"
 }

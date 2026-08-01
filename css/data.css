@@ -25,8 +25,8 @@ view-data tr {
     transition: background-color 0.15s ease;
 }
 
-view-data tr:hover:not(#nowRow) {
-    background-color: rgba(255, 255, 255, 0.03);
+view-data tr:hover:has(td):not(#nowRow){
+    background-color: rgba(255, 255, 255, 0.03) !important;
 }
 
 /* Alternancia de filas (Zebra Striping) */
@@ -57,7 +57,7 @@ view-data tr th {
     font-weight: 600;
 }
 
-view-data tr th input {
+view-data tr th span {
     text-align: center;
     color: var(--text-main, #f8fafc);
     font-size: 13px;
@@ -159,3 +159,40 @@ view-data #nowRow td::after {
 view-data #nowRow:hover td::after {
     opacity: 1;
 }
+
+view-data tr:has(th) {
+    background-color: var(--bg-header, #334155);
+}
+
+view-data br {
+    grid-column: 1;
+    user-select: none;
+    opacity: 0;
+}
+
+view-data tr .delete-row-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+view-data tr:hover .delete-row-btn {
+    opacity: 0.7;
+}
+
+view-data tr .delete-row-btn:hover {
+    opacity: 1 !important;
+}
+

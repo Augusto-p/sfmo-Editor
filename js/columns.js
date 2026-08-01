@@ -27,8 +27,6 @@ class columnsEditor extends HTMLElement {
                 }
             )
         });
-        console.log(cols);
-
         this.FileData["Columns"] = cols;
         this.viewData.reload()
     }
@@ -198,6 +196,16 @@ class columnsEditor extends HTMLElement {
         indexDown.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-360 280-560h400L480-360Z"/></svg>`;
         indexTD.appendChild(indexDown);
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete-column-btn");
+        deleteBtn.innerHTML = "&times;";
+        deleteBtn.addEventListener("click", ()=>{
+            this.Columns.splice(index -1, 1);
+            this.MakeData();
+            this.saveData();
+            
+        })
+        indexTD.appendChild(deleteBtn);
         trd.appendChild(indexTD);
 
         //Name
@@ -229,7 +237,6 @@ class columnsEditor extends HTMLElement {
                 this.saveData();
 
             }
-            console.log(e);
         })
         TypeSelect.setOptions(this.types);
         TypeTD.appendChild(TypeSelect);
@@ -249,7 +256,7 @@ class columnsEditor extends HTMLElement {
                 break;
 
             default:
-                if (type.startsWith("!")) {
+                if (type&&type.startsWith("!")) {
                     TypeSelect.setValue(this.Type_Reference);
                     addReference(this, type);
                 }
@@ -294,7 +301,7 @@ class columnsEditor extends HTMLElement {
         newCol.id = "newCol";
         newCol.addEventListener("click", (e) => {
             this.removeChild(newCol);
-            let newColumn = this.MakeRow(this.querySelectorAll("tr").length, "", null);
+            let newColumn = this.MakeRow(this.Columns.length, "", null);
             this.appendChild(newColumn);
             this.appendChild(newCol);
 

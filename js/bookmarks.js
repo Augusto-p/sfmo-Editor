@@ -38,3 +38,5 @@ function BookmarkLoadLang() {
     BookmarkColumns.firstElementChild.textContent = Lang_Dictionary["columns"];
 }
 
+
+

@@ -58,7 +58,7 @@ class viewData extends HTMLElement {
         this.data = FileData["Data"];
         this.appendChild(this.MakeHeaders());
         this.LoadData();
-        this.newRow()
+        // this.newRow()
     }
 
     reload(){
@@ -68,6 +68,7 @@ class viewData extends HTMLElement {
 
     MakeHeaders() {
         let trh = document.createElement("tr");
+        trh.appendChild(document.createElement("br"));
         this.columnsIndex.forEach(index => {
             let stylecolumn = document.createElement("style");
             stylecolumn.id = `column_${index}_${this.columnsName[index].replaceAll(" ", "-")}`;
@@ -77,12 +78,8 @@ class viewData extends HTMLElement {
             document.body.appendChild(stylecolumn);
             let th = document.createElement("th");
             th.classList.add(`column_${index}_${this.columnsName[index].replaceAll(" ", "-")}`);
-            let input = document.createElement("input");
-            input.type = "text"
-            input.value = this.columnsName[index];
-            input.addEventListener("change", () => {
-                this.columnsName[index] = input.value;
-            })
+            let span = document.createElement("span");
+            span.textContent = this.columnsName[index];
             let slicer = document.createElement("div");
             slicer.classList.add("thSlicer");
             slicer.draggable = true;
@@ -98,22 +95,36 @@ class viewData extends HTMLElement {
 
             });
             th.appendChild(slicer)
-            th.appendChild(input);
+            th.appendChild(span);
             trh.appendChild(th);
         });
-        trh.style.gridTemplateColumns = `repeat(${this.columnsType.length},auto)`
+        
+        trh.style.gridTemplateColumns = `16px repeat(${this.columnsType.length},auto)`
         return trh;
         
     }
 
     LoadData() {
+        this.querySelectorAll("tr:has(td), tr#newRow").forEach(e => { this.removeChild(e); })
         this.data.forEach((row, rowI) => {
             this.MakeRow(row, rowI)
         });
+        this.newRow()
     }
 
     MakeRow(row, rowI) {
         let trd = document.createElement("tr");
+        let delete_btn = document.createElement("button");
+        delete_btn.classList.add("delete-row-btn");
+        delete_btn.innerHTML = "&times;";
+        delete_btn.addEventListener("click", ()=>{
+            console.log(this.data);
+            this.data.splice(rowI, 1);
+            console.log(this.data);
+            
+            this.LoadData();
+        });
+        // trd.appendChild(delete_btn);
         this.columnsIndex.forEach(index => {
             const value = row[index];
             let td = document.createElement("td");
@@ -194,8 +205,8 @@ class viewData extends HTMLElement {
 
         });
 
-
-        trd.style.gridTemplateColumns = `repeat(${this.columnsType.length},auto)`
+        trd.appendChild(delete_btn);
+        trd.style.gridTemplateColumns = `16px repeat(${this.columnsType.length},auto)`
         this.appendChild(trd);
     }
 
@@ -229,6 +240,7 @@ class viewData extends HTMLElement {
     newRow() {
         let newRow = document.createElement("tr");
         newRow.id = "nowRow";
+        newRow.appendChild(document.createElement("br"));
         this.columnsName.forEach((name, index) => {
             let td = document.createElement("td");
             td.classList.add(`column_${index}_${this.columnsName[index].replaceAll(" ", "-")}`);
@@ -242,7 +254,7 @@ class viewData extends HTMLElement {
             this.appendChild(newRow);
 
         })
-        newRow.style.gridTemplateColumns = `repeat(${this.columnsType.length},auto)`
+        newRow.style.gridTemplateColumns = `16px repeat(${this.columnsType.length},auto)`
         this.appendChild(newRow);
     }
     getColumnIndex(name) {

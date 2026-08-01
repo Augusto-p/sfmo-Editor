@@ -1,0 +1,85 @@
+kebab-menu {
+    position: relative;
+    display: block;
+    width: 30px;
+    font-size: 13px;
+    font-family: inherit;
+    border-radius: var(--radius-md, 6px);
+    color: var(--text-main, #f8fafc);
+    box-sizing: border-box;
+    min-height: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    padding-right: 4px;
+}
+
+kebab-menu .view {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    min-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* flex-direction: column; */
+    padding: 0;
+}
+
+kebab-menu .view span {
+    background-color: var(--text-main, #f8fafc);
+    width: 4px;
+    height: 4px;
+    border-radius: 1vw;
+}
+
+kebab-menu .view:hover span {
+    background-color: var(--accent-color, #38bdf8);
+}
+
+kebab-menu ul {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 100;
+    width: max-content;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    list-style: none;
+    background-color: var(--bg-card, #1e293b);
+    border: 1px solid var(--border-color, #334155);
+    border-radius: var(--radius-md, 6px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+kebab-menu .view:focus-within+ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+kebab-menu ul li {
+    margin: 0;
+    padding: 0.25rem 0;
+}
+
+kebab-menu ul li button{
+    background-color: transparent;
+    opacity: .7;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: var(--text-main, #f8fafc);
+}
+kebab-menu ul li button:hover{
+    opacity: 1;
+}
