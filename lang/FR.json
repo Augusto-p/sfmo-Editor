@@ -1,0 +1,46 @@
+{
+    "new row": "Nouvelle ligne",
+    "dashboards": "Tableaux de bord",
+    "datasets": "Jeux de données",
+    "columns": "Colonnes",
+    "privacy policy": "Politique de confidentialité",
+    "terms of service": "Conditions d'utilisation",
+    "FAQ": "Foire aux questions (FAQ)",
+    "drag & drop files here to upload": "Glissez et déposez des fichiers ici pour les importer",
+    "select files to upload": "Sélectionnez les fichiers à importer",
+    "yes": "Oui",
+    "no": "Non",
+    "data loss alert": {
+        "title": "Perdre la progression",
+        "description": "Si vous continuez, toutes les modifications non enregistrées seront perdues. Cette action est irréversible.",
+        "yes": "Accepter",
+        "no": "Annuler"
+    },
+    "Legal": {
+        "Title FAQ": "Foire Aux Questions (FAQ) - SFMO Editor",
+        "Title terms of service": "Conditions d'utilisation de SFMO Editor",
+        "Title privacy policy": "Politique de confidentialité de SFMO Editor"
+    },
+    "columns_editor": {
+        "names": {
+            "index": "Index",
+            "name": "Nom",
+            "type": "Type",
+            "reference": "Référence"
+        },
+        "types": {
+            "boolean": "Booléen",
+            "number": "Nombre",
+            "text": "Texte",
+            "reference": "Référence"
+        },
+        "reference_help": "> **Syntaxe :** `!…![Colonne]JeuDeDonnées`\n>\n> Chaque `!` représente un niveau de jeu de données. À partir du deuxième niveau, la colonne contenant la référence au niveau précédent doit être spécifiée entre `[]`. La colonne de référence doit avoir un index inférieur à celui de la colonne actuelle.",
+        "new_column": "Nouvelle colonne"
+    },
+    "dashboards_kebab_menu": {
+        "new_column": "Nouvelle colonne",
+        "new_row": "Nouvelle ligne",
+        "delete": "Supprimer"
+    },
+    "dashboards_new": "Nouveaux tableaux de bord"
+}
