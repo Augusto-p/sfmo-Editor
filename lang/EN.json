@@ -8,6 +8,14 @@
     "FAQ": "FAQ",
     "drag & drop files here to upload": "Drag & Drop Files Here to Upload",
     "select files to upload": "Select files to Upload",
+    "yes": "Yes",
+    "no": "No",
+    "data loss alert":{
+        "title": "Lose Progress",
+        "description": "If you continue, all unsaved changes will be discarded. This action cannot be undone.",
+        "yes": "Accept",
+        "no": "Cancel"
+    },
     "Legal": {
         "Title FAQ": "Frequently Asked Questions (FQA) - SFMO Editor",
         "Title terms of service": "Terms of Service for SFMO Editor",

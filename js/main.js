@@ -1,4 +1,6 @@
-let FileData = null
+let FileData = null;
+let FileDataHash = null;
+let FileDataFlag = false;
 let columnsType = [];
 let columnsName = [];
 const inputFile = document.getElementById("FileLoad");
@@ -26,8 +28,9 @@ inputFile.addEventListener("change", (e) => {
 
     reader.onload = (event) => {
         const contenido = event.target.result;
-        FileData = JSON.parse(contenido)
-
+        FileData = JSON.parse(contenido);
+        FileDataHash = getFiledataHash();
+        FileDataFlag = false;
         ViewData()
     };
 
@@ -51,6 +54,8 @@ function ViewData() {
         dashboardView.appendChild(dash);
     });
     DataSet = new Datasets(FileData["Datasets"], datasetView);
+    FileDataHash = getFiledataHash();
+    FileDataFlag = false;
 }
 
 function OpenLink(url, download = null) {
@@ -70,3 +75,29 @@ function LoadFileLoadLang() {
     inputFile.parentElement.querySelector("button").textContent = Lang_Dictionary["select files to upload"];
 }
 
+
+function toggle_switchLoadLang() {
+    let style = document.querySelector("style#toggle_switchLoadLang");
+    if (!style) {
+        style = document.createElement("style");
+        style.id = "toggle_switchLoadLang";
+        body.appendChild(style);
+    }
+    style.innerHTML = `toggle-switch:has(input[type=checkbox]:checked)::after {content: "${Lang_Dictionary["yes"]}";} 
+    toggle-switch::after {content: "${Lang_Dictionary["no"]}";}`;
+}
+
+
+function getFiledataHash() {
+    return CryptoJS.SHA1(JSON.stringify(FileData)).toString();
+}
+
+setInterval(() => {
+    if (FileDataHash && !FileDataFlag && FileDataHash != getFiledataHash()) {
+        FileDataFlag = true;
+        body.setAttribute("data-save", false);
+    }else if (FileDataHash == getFiledataHash()) {
+        FileDataFlag = false;
+        body.removeAttribute("data-save");
+    }
+}, 1000)

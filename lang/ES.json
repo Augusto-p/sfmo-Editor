@@ -8,6 +8,14 @@
     "FAQ": "FAQ",
     "drag & drop files here to upload": "Arrastra y Suelta los Archivos aquí para Subirlos.",
     "select files to upload": "Seleccione los Archivos que desea Cargar.",
+    "yes": "Si",
+    "no": "No",
+    "data loss alert":{
+        "title": "Perder el progreso",
+        "description": "Si continúas, se descartarán todos los cambios no guardados. Esta acción no se puede deshacer.",
+        "yes": "Aceptar",
+        "no": "Cancelar"
+    },
     "Legal": {
         "Title FAQ": "Preguntas Frecuentes (FAQ) - SFMO Editor",
         "Title terms of service": "Términos de Servicio de SFMO Editor",

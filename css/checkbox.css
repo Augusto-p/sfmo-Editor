@@ -63,7 +63,7 @@ toggle-switch::before {
 toggle-switch::after {
   content: "NO";
   position: absolute;
-  right: 12px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   font-size: 11px;
@@ -73,6 +73,9 @@ toggle-switch::after {
   pointer-events: none;
   z-index: 5;
   transition: color 0.25s ease, right 0.25s ease, left 0.25s ease;
+  width: calc(100% - 26px);
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* ----------------------------------------------------
@@ -93,7 +96,8 @@ toggle-switch:has(input[type=checkbox]:checked)::before {
 /* Texto de estado (ON: YES) */
 toggle-switch:has(input[type=checkbox]:checked)::after {
   content: "YES";
-  left: 12px;
+  left: 0;
   right: auto;
   color: var(--accent-color, #38bdf8);
+  
 }

@@ -200,6 +200,28 @@ header button:hover{
 header button:active svg {
   transform: scale(0.9);
 }
+
+header button#Save_file_btn span{
+  background-color: var(--accent-color);
+  width: 6px;
+  height: 6px;
+  border-radius: 1vh;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  transition: background-color 0.2s ease, fill 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  opacity: 0;
+}
+
+header button#Save_file_btn:hover span{
+  background-color: var(--line-active-color);
+}
+
+body[data-save="false"] header button#Save_file_btn span{
+  opacity: 1;
+}
+
+
 #GitHub_btn{
   grid-column: 7/9;
 }

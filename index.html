@@ -8,8 +8,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
     </style>
     <script src="libs/marked.min.js"></script>
+    <script src="libs/crypto-js.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script>
         let Lang_Dictionary = {}
         let Lang = "EN";
@@ -40,12 +41,11 @@
             columns_editor.LoadLang();
             document.querySelectorAll("custom-dashboard").forEach(e => { e.LoadLang();});
             dashboard_new_LoadLang();
+            toggle_switchLoadLang();
         }
     </script>
-
-
-
     <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/confirm.css">
     <link rel="stylesheet" href="css/select.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/data.css">
@@ -70,7 +70,6 @@
                 <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
             </svg>
         </button>
-
         <button id="Open_file_btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                 <path
@@ -78,24 +77,21 @@
             </svg>
         </button>
         <button id="Save_file_btn">
+            <span></span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                 <path
                     d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM565-275q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z" />
             </svg>
         </button>
-
         <button id="Privacy_Policy_btn">
             <span>Privacy Policy</span>
         </button>
-
         <button id="Terms_of_Service_btn">
             <span>Terms of Service</span>
         </button>
-
         <button id="FAQ_btn">
             <span>FAQ</span>
         </button>
-
         <button id="GitHub_btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -104,12 +100,8 @@
             </svg>
             <span>GitHub</span>
         </button>
-
         <language-selector></language-selector>
-
-
     </header>
-
     <section id="LoadFile">
         <input type="file" id="FileLoad" accept=".sfmo">
         <div>
@@ -121,21 +113,14 @@
             <button>Select files to Upload</button>
         </div>
     </section>
-
     <view-data id="Data"></view-data>
-
     <div class="Bookmark" id="BookmarkDash"><span>Dashboards</span></div>
     <div class="Bookmark" id="BookmarkDataSets"><span>DataSets</span></div>
     <div class="Bookmark" id="BookmarkColumns"><span>Columns</span></div>
-
-    <section id="Dashboards">
-    </section>
+    <section id="Dashboards"></section>
     <section id="DataSets"></section>
     <section id="Columns"> <columns-editor></columns-editor></section>
-
     <button id="dashboard_new"></button>
-
-
     <section id="Legal">
         <div class="header">
             <button id="Back_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -146,14 +131,8 @@
         </div>
         <section id="ContentView"></section>
     </section>
-
-
-
-
 </body>
 <script src="js/Legal.js"></script>
-
-
 <script src="js/value.js"></script>
 <script src="js/table.js"></script>
 <script src="js/select.js"></script>
@@ -163,18 +142,15 @@
 <script src="js/language_selector.js"></script>
 <script src="js/help_tooltip.js"></script>
 <script src="js/kebab_menu.js"></script>
-
 <script src="js/main.js"></script>
 <script src="js/bookmarks.js"></script>
 <script src="js/columns.js"></script>
 <script src="js/header.js"></script>
 <script src="js/datasetTree.js"></script>
+<script src="js/confirm.js"></script>
 <script>
-
     getLang_Dictionary().then(() => {
-
         LoadLang();
-
         const LegalParams = Object.fromEntries(new URLSearchParams(window.location.search));
         if (LegalParams["legalref"]) {
             let value = LegalParams["legalref"];
@@ -200,5 +176,4 @@
 
     })
 </script>
-<!-- <script src="test.js"></script> -->
 </html>

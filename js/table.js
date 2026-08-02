@@ -58,6 +58,7 @@ class viewData extends HTMLElement {
         this.data = FileData["Data"];
         this.appendChild(this.MakeHeaders());
         this.LoadData();
+        
         // this.newRow()
     }
 
