@@ -81,11 +81,16 @@ blockquote pre code, .Markedown pre code {
   color: var(--text-main);
 }
 
-blockquote, .Markedown {
+blockquote{
   border-left: 4px solid var(--accent-color);
   background-color: var(--bg-card);
   margin: 1.5rem 0;
   padding: 0.75rem 1.25rem;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--text-muted);
+}
+
+.Markedown {
+  border-left: 4px solid var(--accent-color);
   color: var(--text-muted);
 }

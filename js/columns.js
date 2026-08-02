@@ -301,6 +301,10 @@ class columnsEditor extends HTMLElement {
         newCol.id = "newCol";
         newCol.addEventListener("click", (e) => {
             this.removeChild(newCol);
+            this.Columns[this.Columns.length] = {
+                "Name": "",
+                "Type": this.Name_Type
+            }
             let newColumn = this.MakeRow(this.Columns.length, "", null);
             this.appendChild(newColumn);
             this.appendChild(newCol);

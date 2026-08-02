@@ -28,7 +28,7 @@ inputFile.addEventListener("change", (e) => {
 
     reader.onload = (event) => {
         const contenido = event.target.result;
-        FileData = JSON.parse(contenido);
+        FileData = ObfuscatedFile.deobfuscate(contenido);
         FileDataHash = getFiledataHash();
         FileDataFlag = false;
         ViewData()

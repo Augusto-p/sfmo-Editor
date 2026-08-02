@@ -1,0 +1,46 @@
+{
+    "new row": "Neue Zeile",
+    "dashboards": "Dashboards",
+    "datasets": "Datensätze",
+    "columns": "Spalten",
+    "privacy policy": "Datenschutzrichtlinie",
+    "terms of service": "Nutzungsbedingungen",
+    "FAQ": "Häufig gestellte Fragen (FAQ)",
+    "drag & drop files here to upload": "Dateien zum Hochladen hierher ziehen und ablegen",
+    "select files to upload": "Dateien zum Hochladen auswählen",
+    "yes": "Ja",
+    "no": "Nein",
+    "data loss alert": {
+        "title": "Fortschritt verlieren",
+        "description": "Wenn Sie fortfahren, werden alle ungespeicherten Änderungen verworfen. Diese Aktion kann nicht rückgängig gemacht werden.",
+        "yes": "Akzeptieren",
+        "no": "Abbrechen"
+    },
+    "Legal": {
+        "Title FAQ": "Häufig gestellte Fragen (FAQ) - SFMO Editor",
+        "Title terms of service": "Nutzungsbedingungen für SFMO Editor",
+        "Title privacy policy": "Datenschutzrichtlinie für SFMO Editor"
+    },
+    "columns_editor": {
+        "names": {
+            "index": "Index",
+            "name": "Name",
+            "type": "Typ",
+            "reference": "Referenz"
+        },
+        "types": {
+            "boolean": "Boolean",
+            "number": "Zahl",
+            "text": "Text",
+            "reference": "Referenz"
+        },
+        "reference_help": "> **Syntax:** `!…![Spalte]Datensatz`\n>\n> Jedes `!` steht für eine Datensatz-Ebene. Ab der zweiten Ebene muss die Spalte, die die Referenz auf die vorherige Ebene enthält, in `[]` angegeben werden. Die Referenzspalte muss einen kleineren Index als die aktuelle Spalte haben.",
+        "new_column": "Neue Spalte"
+    },
+    "dashboards_kebab_menu": {
+        "new_column": "Neue Spalte",
+        "new_row": "Neue Zeile",
+        "delete": "Löschen"
+    },
+    "dashboards_new": "Neue Dashboards"
+}

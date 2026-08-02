@@ -1,0 +1,46 @@
+{
+    "new row": "Nuova riga",
+    "dashboards": "Dashboard",
+    "datasets": "Dataset",
+    "columns": "Colonne",
+    "privacy policy": "Informativa sulla privacy",
+    "terms of service": "Termini di servizio",
+    "FAQ": "Domande frequenti (FAQ)",
+    "drag & drop files here to upload": "Trascina e rilascia i file qui per caricarli",
+    "select files to upload": "Seleziona i file da caricare",
+    "yes": "Sì",
+    "no": "No",
+    "data loss alert": {
+        "title": "Perdere i progressi",
+        "description": "Se continui, tutte le modifiche non salvate andranno perse. Questa azione non può essere annullata.",
+        "yes": "Accetta",
+        "no": "Annulla"
+    },
+    "Legal": {
+        "Title FAQ": "Domande Frequenti (FAQ) - SFMO Editor",
+        "Title terms of service": "Termini di Servizio di SFMO Editor",
+        "Title privacy policy": "Informativa sulla Privacy di SFMO Editor"
+    },
+    "columns_editor": {
+        "names": {
+            "index": "Indice",
+            "name": "Nome",
+            "type": "Tipo",
+            "reference": "Riferimento"
+        },
+        "types": {
+            "boolean": "Booleano",
+            "number": "Numero",
+            "text": "Testo",
+            "reference": "Riferimento"
+        },
+        "reference_help": "> **Sintassi:** `!…![Colonna]Dataset`\n>\n> Ogni `!` rappresenta un livello di dataset. A partire dal secondo livello, la colonna contenente il riferimento al livello precedente deve essere specificata tra `[]`. La colonna di riferimento deve avere un indice inferiore rispetto alla colonna corrente.",
+        "new_column": "Nuova colonna"
+    },
+    "dashboards_kebab_menu": {
+        "new_column": "Nuova colonna",
+        "new_row": "Nuova riga",
+        "delete": "Elimina"
+    },
+    "dashboards_new": "Nuove dashboard"
+}
