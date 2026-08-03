@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+    </style>
+    <script src="../libs/marked.min.js"></script>
+    <script src="../libs/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <script>
+        let Lang_Dictionary = {}
+        let Lang = "EN";
+        async function getLang_Dictionary() {
+            const params = Object.fromEntries(new URLSearchParams(window.location.search));
+            if (params["lang"]) {
+                Lang = params["lang"];
+                window.localStorage.setItem("Lang", Lang);
+            } else {
+                Lang = window.localStorage.getItem("Lang") ?? "EN";
+                const searchParams = new URLSearchParams(window.location.search)
+                searchParams.set("lang", Lang);
+                const searchString = searchParams.toString();
+                const newUrl = `${window.location.pathname}?${searchParams.toString()}${window.location.hash}`;
+                window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
+
+            }
+            if (!["ES", "EN"].includes(Lang)) { "EN" }
+            let res = await fetch(`lang/${Lang}.json`);
+            let data = await res.json();
+            Lang_Dictionary = data;
+            LoadLang();
+        }
+        function LoadLang() {
+            HeaderLoadLang();
+            BookmarkLoadLang();
+            LoadFileLoadLang();
+            columns_editor.LoadLang();
+            document.querySelectorAll("custom-dashboard").forEach(e => { e.LoadLang();});
+            dashboard_new_LoadLang();
+            toggle_switchLoadLang();
+            dataView.LoadLang();
+        }
+    </script>
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/confirm.css">
+    <link rel="stylesheet" href="css/select.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/data.css">
+    <link rel="stylesheet" href="css/dashboards.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/bookmarks.css">
+    <link rel="stylesheet" href="css/datasets.css">
+    <link rel="stylesheet" href="css/columns.css">
+    <link rel="stylesheet" href="css/kebab_menu.css">
+    <link rel="stylesheet" href="css/help_tooltip.css">
+    <link rel="stylesheet" href="css/language_selector.css">
+    <link rel="stylesheet" href="css/makedown.css">
+    <link rel="shortcut icon" href="App/Icon/app.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/legal/style.css">
+    <title>SFMO Editor</title>
+</head>
+
+<body data-mode="NoLoad">
+    <header>
+        <button id="New_File_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+            </svg>
+        </button>
+        <button id="Open_file_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path
+                    d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640H447l-80-80H160v480l96-320h684L837-217q-8 26-29.5 41.5T760-160H160Zm84-80h516l72-240H316l-72 240Zm0 0 72-240-72 240Zm-84-400v-80 80Z" />
+            </svg>
+        </button>
+        <button id="Save_file_btn">
+            <span></span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path
+                    d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM565-275q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z" />
+            </svg>
+        </button>
+        <button id="Privacy_Policy_btn">
+            <span>Privacy Policy</span>
+        </button>
+        <button id="Terms_of_Service_btn">
+            <span>Terms of Service</span>
+        </button>
+        <button id="FAQ_btn">
+            <span>FAQ</span>
+        </button>
+        <button id="GitHub_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+                    transform="scale(64)" />
+            </svg>
+            <span>GitHub</span>
+        </button>
+        <language-selector></language-selector>
+    </header>
+    <section id="LoadFile">
+        <input type="file" id="FileLoad" accept=".sfmo">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path
+                    d="M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H520q-33 0-56.5-23.5T440-240v-206l-64 62-56-56 160-160 160 160-56 56-64-62v206h220q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41h100v80H260Zm220-280Z" />
+            </svg>
+            <span>Drag & Drop Files Here to Upload</span>
+            <button>Select files to Upload</button>
+        </div>
+    </section>
+    <view-data id="Data"></view-data>
+    <div class="Bookmark" id="BookmarkDash"><span>Dashboards</span></div>
+    <div class="Bookmark" id="BookmarkDataSets"><span>DataSets</span></div>
+    <div class="Bookmark" id="BookmarkColumns"><span>Columns</span></div>
+    <section id="Dashboards"></section>
+    <section id="DataSets"></section>
+    <section id="Columns"> <columns-editor></columns-editor></section>
+    <button id="dashboard_new"></button>
+    <section id="Legal">
+        <div class="header">
+            <button id="Back_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+                </svg>
+            </button>
+            <h1 id="Title"></h1>
+        </div>
+        <section id="ContentView" class="Markedown"></section>
+    </section>
+</body>
+<script src="js/Legal.js"></script>
+<script src="js/value.js"></script>
+<script src="js/table.js"></script>
+<script src="js/select.js"></script>
+<script src="js/selectorType.js"></script>
+<script src="js/dataset.js"></script>
+<script src="js/dashBoard.js"></script>
+<script src="js/language_selector.js"></script>
+<script src="js/help_tooltip.js"></script>
+<script src="js/kebab_menu.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bookmarks.js"></script>
+<script src="js/columns.js"></script>
+<script src="js/header.js"></script>
+<script src="js/datasetTree.js"></script>
+<script src="js/confirm.js"></script>
+
+<script>
+    getLang_Dictionary().then(() => {
+        LoadLang();
+        const LegalParams = Object.fromEntries(new URLSearchParams(window.location.search));
+        if (LegalParams["legalref"]) {
+            let value = LegalParams["legalref"];
+            const searchParams = new URLSearchParams(window.location.search);
+            searchParams.delete("legalref")
+            const searchString = searchParams.toString();
+            const newUrl = `${window.location.pathname.split("/Legal/")[0]}/Legal/Terms_of_Service?${searchString}${window.location.hash}`;
+            window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
+            switch (value) {
+                case "FAQ":
+                    ViewFAQ();
+                    break;
+                case "Privacy_Policy":
+                    ViewPrivacyPolicy();
+                    break;
+                case "Terms_of_Service":
+                    ViewTermsOfService();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    })
+</script>
+<script src="js/obfuscated.js"></script>
+</html>
