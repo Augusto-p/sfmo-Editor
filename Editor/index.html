@@ -28,13 +28,14 @@
                 window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
 
             }
-            if (!["ES", "EN"].includes(Lang)) { "EN" }
+            if (!["ES", "EN", "PT", "FR", "IT", "DE", "RU"].includes(Lang)) { "EN" }
             let res = await fetch(`lang/${Lang}.json`);
             let data = await res.json();
             Lang_Dictionary = data;
             LoadLang();
         }
         function LoadLang() {
+            document.documentElement.setAttribute("lang", Lang);
             HeaderLoadLang();
             BookmarkLoadLang();
             LoadFileLoadLang();

@@ -207,3 +207,23 @@ footer a:hover {
   font-size: 0.8rem;
   margin: 0;
 }
+
+/* Scrollbar Personalizada */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color, #334155);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted, #64748b);
+}

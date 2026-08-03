@@ -1,0 +1,36 @@
+{
+    "title": "SFMO Editor",
+    "subtitle": "Un editor specializzato per gestire, strutturare e visualizzare file di dati <code>.sfmo</code>",
+    "what_is": "Che cos'è SFMO Editor?",
+    "description": "<strong>SFMO Editor</strong> è un'applicazione web con <strong>integrazione con Google Drive</strong> che ti consente di aprire, modificare e gestire file <code>.sfmo</code> personalizzati direttamente dal tuo spazio di archiviazione in cloud. Ti permette di creare tabelle di dati strutturate collegate a più set di dati e di generare dashboard analitiche sintetizzate.",
+    "launch_editor": "Avvia l'app SFMO Editor",
+    "features_title": "Caratteristiche principali",
+    "features": [
+        {
+            "title": "Tabella dati principale",
+            "description": "Supporta i tipi di dati <code>Boolean</code>, <code>Text</code> e <code>Number</code>, oltre a riferimenti diretti ai set di dati archiviati."
+        },
+        {
+            "title": "Supporto per più set di dati",
+            "description": "Memorizza e gestisci più set di dati indipendenti all'interno dello stesso file da fare riferimento nella tabella principale."
+        },
+        {
+            "title": "Dashboard integrate",
+            "description": "Visualizza metriche sintetizzate e riepiloghi di dati generati direttamente dalla tabella principale."
+        },
+        {
+            "title": "Integrazione con Google Drive",
+            "description": "Apri e modifica in modo fluido i file <code>.sfmo</code> archiviati nel tuo spazio Google Drive."
+        }
+    ],
+    "how_to_use": "Come usare l'app",
+    "how_to_use_ol": [
+        "Accedi all'app web o installa l'integrazione tramite Google Workspace Marketplace.",
+        "Fai clic con il pulsante destro del mouse su qualsiasi file <code>.sfmo</code> all'interno di Google Drive e seleziona <strong>Apri con &gt; SFMO Editor</strong>.",
+        "Modifica la tabella principale, collega i set di dati o analizza i tuoi dati utilizzando la dashboard integrata."
+    ],
+    "copyright": "SFMO Editor. Tutti i diritti riservati.",
+    "privacy_policy": "Informativa sulla privacy",
+    "terms_of_service": "Termini di servizio",
+    "FAQ": "Domande frequenti"
+}

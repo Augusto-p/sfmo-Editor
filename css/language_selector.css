@@ -1,0 +1,150 @@
+/* Modificamos la clase para que sea un elemento inline-flex perfecto */
+.language-select-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  width: auto;                  /* Ancho automático según contenido */
+  min-width: 42px;              /* Espacio suficiente para bandera + flecha */
+  height: 28px;                 /* Compacto para el footer */
+  font-size: 13px;
+  font-family: inherit;
+  border-radius: var(--radius-md, 6px);
+  color: var(--text-main, #f8fafc);
+  box-sizing: border-box;
+  padding-right: 18px;          /* Espacio reservado para la flechita */
+  margin-left: 0.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+/* Valor Seleccionado Actual */
+.language-select-box .current {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.language-select-box .current .value {
+  display: none;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.language-select-box .current input {
+  display: none;
+}
+
+.language-select-box .current input:checked + .option-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-select-box .current .value:has(input:checked) {
+  display: flex;
+}
+
+.language-select-box .current .option-content {
+  display: none;
+}
+
+/* Contenedor Flex de la Bandera */
+.language-select-box .option-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+/* Bandera Redonda */
+.language-select-box .flag-icon {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  background-color: #0f172a;
+}
+
+/* Flecha desplegable compacta */
+.language-select-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 4px;
+  height: 4px;
+  border: solid 1.5px var(--text-muted, #94a3b8);
+  border-top: none;
+  border-left: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  pointer-events: none;
+}
+
+.language-select-box:focus-within::after {
+  transform: translateY(-20%) rotate(225deg);
+  border-color: var(--accent-color, #38bdf8);
+}
+
+/* Lista Desplegable (Despliega hacia ARRIBA para no salirse del footer) */
+.language-select-box ul {
+  position: absolute;
+  bottom: calc(100% + 6px);     /* Despliega hacia arriba */
+  right: 0;                     /* Alineado a la derecha */
+  z-index: 100;
+  width: max-content;
+  box-sizing: border-box;
+  padding: 0.25rem 0;
+  list-style: none;
+  background-color: var(--bg-card, #1e293b);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-md, 6px);
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.4);
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.language-select-box .current:focus-within + ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-select-box ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.language-select-box ul label {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: var(--text-muted, #94a3b8);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.language-select-box ul label:hover {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color, #38bdf8);
+}

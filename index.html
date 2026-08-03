@@ -1,11 +1,38 @@
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFMO Editor</title>
+    <link rel="stylesheet" href="css/language_selector.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="Editor/App/Icon/app.ico" type="image/x-icon">
+    <script>
+        let Lang_Dictionary = {}
+        let Lang = "EN";
+        async function getLang_Dictionary() {
+            const params = Object.fromEntries(new URLSearchParams(window.location.search));
+            if (params["lang"]) {
+                Lang = params["lang"];
+                window.localStorage.setItem("Lang", Lang);
+            } else {
+                Lang = window.localStorage.getItem("Lang") ?? "EN";
+                const searchParams = new URLSearchParams(window.location.search)
+                searchParams.set("lang", Lang);
+                const searchString = searchParams.toString();
+                const newUrl = `${window.location.pathname}?${searchParams.toString()}${window.location.hash}`;
+                window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
+
+            }
+            if (!["ES", "EN", "PT", "FR", "IT", "DE", "RU"].includes(Lang)) { "EN" }
+            let res = await fetch(`lang/${Lang}.json`);
+            let data = await res.json();
+            Lang_Dictionary = data;
+            LoadLang();
+        }
+       
+        
+    </script>
 </head>
 
 <body>
@@ -17,8 +44,8 @@
 
     <main>
         <section>
-            <h2>What is SFMO Editor?</h2>
-            <p>
+            <h2 class="what_is">What is SFMO Editor?</h2>
+            <p class="description">
                 <strong>SFMO Editor</strong> is a web application featuring <strong>Google Drive integration</strong>
                 that allows you to open, edit, and manage custom <code>.sfmo</code> files directly from your cloud
                 storage. It enables you to build structured data tables connected to multiple datasets and generate
@@ -26,12 +53,12 @@
             </p>
 
             <div class="cta-container">
-                <a href="editor.html" class="btn-primary">Launch SFMO Editor App &rarr;</a>
+                <a href="Editor/" class="btn-primary" id="Launch_Editor">Launch SFMO Editor App &rarr;</a>
             </div>
         </section>
 
         <section class="card">
-            <h2>Key Features</h2>
+            <h2 class="features-title">Key Features</h2>
             <div class="features-grid">
                 <div class="feature-item">
                     <h3>Main Data Table</h3>
@@ -56,8 +83,8 @@
         </section>
 
         <section>
-            <h2>How to Use the App</h2>
-            <ol>
+            <h2 class="how_to_use">How to Use the App</h2>
+            <ol class="how_to_use_ol">
                 <li>Access the web app or install the integration via Google Workspace Marketplace.</li>
                 <li>Right-click any <code>.sfmo</code> file inside Google Drive and select <strong>Open with &gt; SFMO
                         Editor</strong>.</li>
@@ -68,15 +95,20 @@
 
     <footer>
         <p class="footer-links">
-            <a href="privacy.html">Privacy Policy</a>
+            <a href="Editor/Legal/Privacy_Policy" class="Privacy_Policy">Privacy Policy</a>
             <span class="dot">•</span>
-            <a href="terms.html">Terms of Service</a>
+            <a href="Editor/Legal/Terms_of_Service" class="Terms_of_Service">Terms of Service</a>
             <span class="dot">•</span>
-            <a href="faq.html">FAQ</a>
+            <a href="Editor/Legal/FAQ" class="FAQ">FAQ</a>
+            <language-selector></language-selector>
         </p>
         <p class="copyright">&copy; 2026 SFMO Editor. All rights reserved.</p>
     </footer>
 
 </body>
-
+<script src="Editor/js/language_selector.js"></script>
+<script src="js/main.js"></script>
+<script>
+    let lang_promese = getLang_Dictionary();
+</script>
 </html>

@@ -1,0 +1,36 @@
+{
+    "title": "SFMO Editor",
+    "subtitle": "Un editor especializado para gestionar, estructurar y visualizar archivos de datos <code>.sfmo</code>",
+    "what_is": "¿Qué es SFMO Editor?",
+    "description": "<strong>SFMO Editor</strong> es una aplicación web con <strong>integración para Google Drive</strong> que te permite abrir, editar y gestionar archivos <code>.sfmo</code> personalizados directamente desde tu almacenamiento en la nube. Te permite crear tablas de datos estructuradas conectadas a múltiples conjuntos de datos y generar paneles analíticos sintetizados.",
+    "launch_editor": "Iniciar SFMO Editor",
+    "features_title": "Características principales",
+    "features": [
+        {
+            "title": "Tabla de datos principal",
+            "description": "Admite tipos de datos <code>Boolean</code> (Booleano), <code>Text</code> (Texto) y <code>Number</code> (Número), junto con referencias directas a conjuntos de datos almacenados."
+        },
+        {
+            "title": "Soporte multiconjunto de datos",
+            "description": "Almacena y gestiona múltiples conjuntos de datos independientes dentro del mismo archivo para hacer referencia a ellos en tu tabla principal."
+        },
+        {
+            "title": "Paneles integrados",
+            "description": "Visualiza métricas sintetizadas y resúmenes de datos generados directamente desde tu tabla principal."
+        },
+        {
+            "title": "Integración con Google Drive",
+            "description": "Abre y edita sin problemas archivos <code>.sfmo</code> almacenados en tu cuenta de Google Drive."
+        }
+    ],
+    "how_to_use": "Cómo usar la aplicación",
+    "how_to_use_ol": [
+        "Accede a la aplicación web o instala la integración a través de Google Workspace Marketplace.",
+        "Haz clic derecho en cualquier archivo <code>.sfmo</code> dentro de Google Drive y selecciona <strong>Abrir con &gt; SFMO Editor</strong>.",
+        "Edita tu tabla principal, vincula conjuntos de datos o analiza tus datos utilizando el panel integrado."
+    ],
+    "copyright": "SFMO Editor. Todos los derechos reservados.",
+    "privacy_policy": "Política de privacidad",
+    "terms_of_service": "Términos del servicio",
+    "FAQ": "Preguntas frecuentes"
+}

@@ -1,0 +1,36 @@
+{
+    "title": "SFMO Editor",
+    "subtitle": "Um editor especializado para gerenciar, estruturar e visualizar arquivos de dados <code>.sfmo</code>",
+    "what_is": "O que é o SFMO Editor?",
+    "description": "O <strong>SFMO Editor</strong> é um aplicativo web com <strong>integração com o Google Drive</strong> que permite abrir, editar e gerenciar arquivos <code>.sfmo</code> personalizados diretamente do seu armazenamento em nuvem. Ele permite construir tabelas de dados estruturadas conectadas a múltiplos conjuntos de dados e gerar painéis analíticos sintetizados.",
+    "launch_editor": "Iniciar o aplicativo SFMO Editor",
+    "features_title": "Principais Recursos",
+    "features": [
+        {
+            "title": "Tabela de Dados Principal",
+            "description": "Suporta os tipos de dados <code>Boolean</code>, <code>Text</code> e <code>Number</code>, além de referências diretas a conjuntos de dados armazenados."
+        },
+        {
+            "title": "Suporte a Múltiplos Conjuntos de Dados",
+            "description": "Armazene e gerencie múltiplos conjuntos de dados independentes dentro do mesmo arquivo para referenciá-los em sua tabela principal."
+        },
+        {
+            "title": "Painéis Integrados",
+            "description": "Visualize métricas sintetizadas e resumos de dados gerados diretamente a partir da sua tabela principal."
+        },
+        {
+            "title": "Integração com o Google Drive",
+            "description": "Abra e edite facilmente arquivos <code>.sfmo</code> armazenados no seu Google Drive."
+        }
+    ],
+    "how_to_use": "Como Usar o Aplicativo",
+    "how_to_use_ol": [
+        "Acesse o aplicativo web ou instale a integração através do Google Workspace Marketplace.",
+        "Clique com o botão direito em qualquer arquivo <code>.sfmo</code> dentro do Google Drive e selecione <strong>Abrir com &gt; SFMO Editor</strong>.",
+        "Edite sua tabela principal, vincule conjuntos de dados ou analise seus dados usando o painel integrado."
+    ],
+    "copyright": "SFMO Editor. Todos os direitos reservados.",
+    "privacy_policy": "Política de Privacidade",
+    "terms_of_service": "Termos de Serviço",
+    "FAQ": "Perguntas Frequentes (FAQ)"
+}

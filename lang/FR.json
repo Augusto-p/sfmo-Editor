@@ -1,0 +1,36 @@
+{
+    "title": "SFMO Editor",
+    "subtitle": "Un éditeur spécialisé pour gérer, structurer et visualiser les fichiers de données <code>.sfmo</code>",
+    "what_is": "Qu'est-ce que SFMO Editor ?",
+    "description": "<strong>SFMO Editor</strong> est une application web dotée d'une <strong>intégration avec Google Drive</strong> qui vous permet d'ouvrir, de modifier et de gérer des fichiers <code>.sfmo</code> personnalisés directement depuis votre espace de stockage en ligne. Elle vous permet de créer des tableaux de données structurés connectés à plusieurs jeux de données et de générer des tableaux de bord analytiques synthétiques.",
+    "launch_editor": "Lancer l'application SFMO Editor",
+    "features_title": "Fonctionnalités principales",
+    "features": [
+        {
+            "title": "Tableau de données principal",
+            "description": "Prend en charge les types de données <code>Boolean</code>, <code>Text</code> et <code>Number</code>, ainsi que des références directes aux jeux de données stockés."
+        },
+        {
+            "title": "Prise en charge de plusieurs jeux de données",
+            "description": "Stockez et gérez plusieurs jeux de données indépendants au sein du même fichier pour y faire référence dans votre tableau principal."
+        },
+        {
+            "title": "Tableaux de bord intégrés",
+            "description": "Visualisez des métriques synthétiques et des résumés de données générés directement à partir de votre tableau principal."
+        },
+        {
+            "title": "Intégration avec Google Drive",
+            "description": "Ouvrez et modifiez de manière fluide les fichiers <code>.sfmo</code> stockés dans votre espace Google Drive."
+        }
+    ],
+    "how_to_use": "Comment utiliser l'application",
+    "how_to_use_ol": [
+        "Accédez à l'application web ou installez l'intégration via le Google Workspace Marketplace.",
+        "Faites un clic droit sur n'importe quel fichier <code>.sfmo</code> dans Google Drive et sélectionnez <strong>Ouvrir avec &gt; SFMO Editor</strong>.",
+        "Modifiez votre tableau principal, liez des jeux de données ou analysez vos données à l'aide du tableau de bord intégré."
+    ],
+    "copyright": "SFMO Editor. Tous droits réservés.",
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_service": "Conditions d'utilisation",
+    "FAQ": "Foire aux questions"
+}

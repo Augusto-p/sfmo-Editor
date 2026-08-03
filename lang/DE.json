@@ -1,0 +1,36 @@
+{
+    "title": "SFMO Editor",
+    "subtitle": "Ein spezialisierter Editor zum Verwalten, Strukturieren und Visualisieren von <code>.sfmo</code>-Datendateien",
+    "what_is": "Was ist der SFMO Editor?",
+    "description": "Der <strong>SFMO Editor</strong> ist eine Webanwendung mit <strong>Google Drive-Integration</strong>, mit der Sie benutzerdefinierte <code>.sfmo</code>-Dateien direkt aus Ihrem Cloud-Speicher öffnen, bearbeiten und verwalten können. Er ermöglicht Ihnen das Erstellen strukturierter Datentabellen, die mit mehreren Datensätzen verknüpft sind, sowie die Generierung zusammengefasster analytischer Dashboards.",
+    "launch_editor": "SFMO Editor App starten",
+    "features_title": "Hauptfunktionen",
+    "features": [
+        {
+            "title": "Hauptdatentabelle",
+            "description": "Unterstützt die Datentypen <code>Boolean</code>, <code>Text</code> und <code>Number</code> sowie direkte Verweise auf gespeicherte Datensätze."
+        },
+        {
+            "title": "Unterstützung mehrerer Datensätze",
+            "description": "Speichern und verwalten Sie mehrere unabhängige Datensätze innerhalb derselben Datei, um in Ihrer Haupttabelle darauf zu verweisen."
+        },
+        {
+            "title": "Integrierte Dashboards",
+            "description": "Visualisieren Sie zusammengefasste Kennzahlen und Datenübersichten, die direkt aus Ihrer Haupttabelle generiert werden."
+        },
+        {
+            "title": "Google Drive-Integration",
+            "description": "Öffnen und bearbeiten Sie in Ihrem Google Drive-Speicher abgelegte <code>.sfmo</code>-Dateien nahtlos."
+        }
+    ],
+    "how_to_use": "So verwenden Sie die App",
+    "how_to_use_ol": [
+        "Rufen Sie die Web-App auf oder installieren Sie die Integration über den Google Workspace Marketplace.",
+        "Klicken Sie mit der rechten Maustaste auf eine beliebige <code>.sfmo</code>-Datei in Google Drive und wählen Sie <strong>Öffnen mit &gt; SFMO Editor</strong>.",
+        "Bearbeiten Sie Ihre Haupttabelle, verknüpfen Sie Datensätze oder analysieren Sie Ihre Daten mithilfe des integrierten Dashboards."
+    ],
+    "copyright": "SFMO Editor. Alle Rechte vorbehalten.",
+    "privacy_policy": "Datenschutzbestimmungen",
+    "terms_of_service": "Nutzungsbedingungen",
+    "FAQ": "Häufig gestellte Fragen (FAQ)"
+}
