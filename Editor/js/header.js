@@ -43,7 +43,7 @@ save_file_btn.addEventListener("click", () => {
     body.removeAttribute("data-save");
     FileDataHash = getFiledataHash();
     let obfuscate_data = ObfuscatedFile.obfuscate(FileData);
-    const blob = new Blob([obfuscate_data], { type: 'text/plain;charset=utf-8' });
+    const blob = new Blob([obfuscate_data], { type: 'application/x-sfmo;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     let Name = "file.sfmo";
     if (inputFile.files[0]) {
