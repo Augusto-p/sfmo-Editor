@@ -39,6 +39,9 @@ All of this data resides **exclusively on your device**, and you can clear it at
 
 While **SFMO Editor** does not store data on dedicated servers, it relies on the following third-party services for hosting and optional integration:
 
+* **Google API Limited Use Disclosure:**
+  SFMO Editor's use and transfer to any other app of information received from Google APIs will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+
 * **GitHub Pages Hosting:** The web interface is served via GitHub Pages (GitHub, Inc.). When you access the site, GitHub may automatically collect standard HTTP request logs (such as your IP address, browser type, and access timestamp) for security, infrastructure, and diagnostic purposes. For more details, please review the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
 * **Google Drive Integration (Optional):** If you choose to open or save files directly from your Google Drive account:
 * Authentication and file transfers occur via official Google APIs directly between your browser and Google's servers.
