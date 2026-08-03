@@ -22,6 +22,12 @@ body[data-Mode*="DataSets"] #DataSets {
     top: 75vh;
 }
 
+body[data-Mode*="DataSets"] #BookmarkDataSets.Bookmark {
+    background-color: var(--accent-color, #38bdf8);
+    color: #0f172a;
+    border-color: var(--accent-color, #38bdf8);
+}
+
 /* Estrutura Grid de cada Nodo */
 dataset-tree-node {
     position: relative;
@@ -97,7 +103,7 @@ dataset-tree-node .delete-node-btn {
     padding: 0 4px;
     opacity: 0;
     transition: opacity 0.2s ease;
-        display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -127,7 +133,8 @@ dataset-tree-node:has(> .next_level)>.level::after {
     content: "";
     position: absolute;
     right: -0.6rem;
-    top: calc(19px - 0.05rem); /* Centro vertical del recuadro (38px / 2) */
+    top: calc(19px - 0.05rem);
+    /* Centro vertical del recuadro (38px / 2) */
     width: 1rem;
     height: 2px;
     background-color: var(--border-color, #334155);
