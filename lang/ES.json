@@ -32,5 +32,10 @@
     "copyright": "SFMO Editor. Todos los derechos reservados.",
     "privacy_policy": "Política de privacidad",
     "terms_of_service": "Términos del servicio",
-    "FAQ": "Preguntas frecuentes"
+    "FAQ": "Preguntas frecuentes",
+    "Legal": {
+        "Title FAQ": "Preguntas Frecuentes (FAQ) - SFMO Editor",
+        "Title terms of service": "Términos de Servicio de SFMO Editor",
+        "Title privacy policy": "Política de Privacidad de SFMO Editor"
+    }
 }

@@ -16,11 +16,6 @@
         "yes": "Aceptar",
         "no": "Cancelar"
     },
-    "Legal": {
-        "Title FAQ": "Preguntas Frecuentes (FAQ) - SFMO Editor",
-        "Title terms of service": "Términos de Servicio de SFMO Editor",
-        "Title privacy policy": "Política de Privacidad de SFMO Editor"
-    },
     "columns_editor": {
         "names": {
             "index": "Indece",

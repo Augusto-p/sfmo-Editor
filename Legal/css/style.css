@@ -1,3 +1,35 @@
+:root {
+  --bg-dashboard-container: #0f172a;
+  --bg-card: #1e293b;
+  --bg-header: #334155;
+  --bg-row-even: #1e293b;
+  --bg-row-odd: #0f172a;
+  --accent-color: #38bdf8;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --line-active-color: #f472b6; /* Rosa / Pink */
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 100vw 100vw;
+  grid-template-rows: 100vh;
+  position: relative;
+}
+
 #Legal {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -14,7 +46,6 @@
   color: var(--text-main);
   display: flex;
   flex-direction: column;
-  transform: translateY(-101vh);
   transition: 0.2s transform;
 }
 body[data-Mode*="Legal"] #Legal{

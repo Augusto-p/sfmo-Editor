@@ -16,11 +16,7 @@
         "yes": "Accetta",
         "no": "Annulla"
     },
-    "Legal": {
-        "Title FAQ": "Domande Frequenti (FAQ) - SFMO Editor",
-        "Title terms of service": "Termini di Servizio di SFMO Editor",
-        "Title privacy policy": "Informativa sulla Privacy di SFMO Editor"
-    },
+    
     "columns_editor": {
         "names": {
             "index": "Indice",

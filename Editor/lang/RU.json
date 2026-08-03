@@ -16,11 +16,7 @@
         "yes": "Принять",
         "no": "Отмена"
     },
-    "Legal": {
-        "Title FAQ": "Часто задаваемые вопросы (FAQ) — SFMO Editor",
-        "Title terms of service": "Условия использования SFMO Editor",
-        "Title privacy policy": "Политика конфиденциальности SFMO Editor"
-    },
+    
     "columns_editor": {
         "names": {
             "index": "Индекс",

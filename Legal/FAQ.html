@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Editor/App/Icon/app.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <script>
+        let Lang_Dictionary = {}
+        let Lang = "EN";
+        async function getLang_Dictionary() {
+            const params = Object.fromEntries(new URLSearchParams(window.location.search));
+            if (params["lang"]) {
+                Lang = params["lang"];
+                window.localStorage.setItem("Lang", Lang);
+            } else {
+                Lang = window.localStorage.getItem("Lang") ?? "EN";
+                const searchParams = new URLSearchParams(window.location.search)
+                searchParams.set("lang", Lang);
+                const searchString = searchParams.toString();
+                const newUrl = `${window.location.pathname}?${searchParams.toString()}${window.location.hash}`;
+                window.history.pushState({}, "", newUrl.replaceAll("//", "/"));
+
+            }
+            if (!["ES", "EN", "PT", "FR", "IT", "DE", "RU"].includes(Lang)) { "EN" }
+            let res = await fetch(`../lang/${Lang}.json`);
+            let data = await res.json();
+            Lang_Dictionary = data;
+        }
+
+        let lang_promese = getLang_Dictionary();
+
+    </script>
+
+    <section id="Legal">
+        <div class="header">
+            <button id="Back_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+                </svg>
+            </button>
+            <h1 id="Title">Frequently Asked Questions (FQA) - SFMO Editor</h1>
+        </div>
+        <section id="ContentView" class="Markedown">
+        </section>
+    </section>
+
+
+</body>
+
+<script>
+    const LegalTitle = document.querySelector("#Title");
+const LegalContent = document.querySelector("#ContentView");
+const LegalBack_Btn = document.querySelector("#Back_btn");
+
+    lang_promese.then(_ => {
+        Load_Legal_Content("FAQ")
+    })
+    async function Load_Legal_Content(name) {
+        LegalTitle.textContent = Lang_Dictionary["Legal"]["Title FAQ"]
+        fetch(`${window.location.pathname.split("/Legal/")[0]}/Laws/${Lang}/${name}.md`.replaceAll("//", "/")).then(res => {
+            if (res.status == 200) {
+                return res.text();
+            }
+        }).then(data => {
+            LegalContent.innerHTML = marked.parse(data);
+        });
+    }
+
+    LegalBack_Btn.addEventListener("click", () => {
+        window.location.pathname = window.location.pathname.split("/Legal/")[0]; 
+    })
+
+</script>
+
+</html>

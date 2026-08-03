@@ -9,13 +9,14 @@ const language_selector = document.querySelector("language-selector");
 
 new_file_btn.addEventListener("click", () => {
     if (!FileDataFlag) {
-        FileData = {"Columns": [{"Name": "","Index": 1,"Type": "text"}],"Datasets": {},"Dashboards": {},"Data": []}
+        FileData = { "Columns": [{ "Name": "", "Index": 1, "Type": "text" }], "Datasets": {}, "Dashboards": {}, "Data": [] }
         ViewData();
         return
     }
 
     let alert = document.createElement("custom-confirm");
-    alert.init(_ => {return}, _ => {FileData = {"Columns": [{"Name": "","Index": 1,"Type": "text"}],"Datasets": {},"Dashboards": {},"Data": []}
+    alert.init(_ => { return }, _ => {
+        FileData = { "Columns": [{ "Name": "", "Index": 1, "Type": "text" }], "Datasets": {}, "Dashboards": {}, "Data": [] }
         ViewData();
     });
     alert.setText(Lang_Dictionary["data loss alert"]["title"], Lang_Dictionary["data loss alert"]["description"], Lang_Dictionary["data loss alert"]["no"], Lang_Dictionary["data loss alert"]["yes"])
@@ -31,7 +32,7 @@ open_file_btn.addEventListener("click", () => {
     }
 
     let alert = document.createElement("custom-confirm");
-    alert.init(_ => {return}, _ => {inputFile.click();});
+    alert.init(_ => { return }, _ => { inputFile.click(); });
     alert.setText(Lang_Dictionary["data loss alert"]["title"], Lang_Dictionary["data loss alert"]["description"], Lang_Dictionary["data loss alert"]["no"], Lang_Dictionary["data loss alert"]["yes"])
     body.appendChild(alert);
 });
@@ -52,11 +53,16 @@ save_file_btn.addEventListener("click", () => {
     URL.revokeObjectURL(url);
 });
 
-privacy_policy_btn.addEventListener("click", () => ViewPrivacyPolicy());
+privacy_policy_btn.addEventListener("click", () => {
+    let new_url = `${window.location.pathname.split("/Editor/")[0]}/Legal/Privacy_Policy`;
+    window.location.pathname = new_url;
+});
 
-terms_of_service_btn.addEventListener("click", () => ViewTermsOfService());
+terms_of_service_btn.addEventListener("click", () => {let new_url = `${window.location.pathname.split("/Editor/")[0]}/Legal/Terms_of_Service`;
+    window.location.pathname = new_url;});
 
-faq_btn.addEventListener("click", () => ViewFAQ());
+faq_btn.addEventListener("click", () => {let new_url = `${window.location.pathname.split("/Editor/")[0]}/Legal/FAQ`;
+    window.location.pathname = new_url;});
 
 github_btn.addEventListener("click", () => { OpenLink(`https://github.com/Augusto-p/sfmo-Editor`); });
 
@@ -89,7 +95,7 @@ language_selector.setOptions([
 
 
 document.addEventListener("keydown", e => {
-    if (e.target.matches("input, textarea, select") ||e.target.isContentEditable) {return;}
+    if (e.target.matches("input, textarea, select") || e.target.isContentEditable) { return; }
 
     if (e.ctrlKey && e.key.toLowerCase() === "s") {
         e.preventDefault();
