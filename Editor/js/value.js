@@ -31,8 +31,8 @@ class Parser {
 
         // Eliminar paréntesis envolventes redundantes: "(A == B)" -> "A == B"
         while (
-            expresion.startsWith("(") && 
-            expresion.endsWith(")") && 
+            expresion.startsWith("(") &&
+            expresion.endsWith(")") &&
             this._esParentesisBalanceado(expresion.slice(1, -1))
         ) {
             expresion = expresion.slice(1, -1).trim();
@@ -101,8 +101,8 @@ class Parser {
     }
 
     _esTextoLiteral(str) {
-        return (str.startsWith("'") && str.endsWith("'")) || 
-               (str.startsWith('"') && str.endsWith('"'));
+        return (str.startsWith("'") && str.endsWith("'")) ||
+            (str.startsWith('"') && str.endsWith('"'));
     }
 
     _dividirArgumentos(contenido) {
@@ -196,21 +196,21 @@ class Evaluator {
 
         switch (node.value.toUpperCase()) {
             case "==": return left === right;
-            case "!=": 
+            case "!=":
             case "<>": return left !== right;
-            case ">":  return left > right;
-            case "<":  return left < right;
+            case ">": return left > right;
+            case "<": return left < right;
             case ">=": return left >= right;
             case "<=": return left <= right;
             case "&&":
             case "AND": return Boolean(left && right);
             case "||":
-            case "OR":  return Boolean(left || right);
-            case "+":  return Number(left) + Number(right);
-            case "-":  return Number(left) - Number(right);
-            case "*":  return Number(left) * Number(right);
-            case "/":  return Number(right) !== 0 ? Number(left) / Number(right) : 0;
-            case "^":  return Math.pow(Number(left), Number(right));
+            case "OR": return Boolean(left || right);
+            case "+": return Number(left) + Number(right);
+            case "-": return Number(left) - Number(right);
+            case "*": return Number(left) * Number(right);
+            case "/": return Number(right) !== 0 ? Number(left) / Number(right) : 0;
+            case "^": return Math.pow(Number(left), Number(right));
             default:
                 throw new Error(`Operador desconocido: ${node.value}`);
         }
@@ -245,7 +245,10 @@ class Evaluator {
         const columnName = FormulaEngine.extractColumnName(trimVal);
         if (columnName !== null && row && this.dataView) {
             const colIndex = this.dataView.getColumnIndex(columnName);
-            return colIndex !== -1 ? row[colIndex] : null;
+            if (colIndex !== -1 && row[colIndex] !== undefined) {
+                return row[colIndex];
+            }
+            return null;
         }
 
         return trimVal;
@@ -327,3 +330,5 @@ class FormulaEngine {
         return match ? match[1] : null;
     }
 }
+
+

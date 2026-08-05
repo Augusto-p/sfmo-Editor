@@ -38,7 +38,7 @@ class CustomSelect extends HTMLElement {
         this.current.addEventListener("blur", () => {
             this.menuOpen = false;
         });
-        
+
         this.makeOptions()
     }
 
@@ -55,40 +55,43 @@ class CustomSelect extends HTMLElement {
         this.list.innerHTML = "";
 
         fullOptions.forEach(option => {
-            const value = document.createElement("div");
-            value.classList.add("value");
+            if (option != "NewButton") {
 
-            const input = document.createElement("input");
-            input.type = "radio";
-            input.name = this.absolute_name;
-            input.id = `${this.absolute_name}_${option}`;
-            input.value = option ?? "";
+                const value = document.createElement("div");
+                value.classList.add("value");
 
-            const p = document.createElement("p");
-            p.textContent = option ?? ""; // Si es null, muestra texto vacío
+                const input = document.createElement("input");
+                input.type = "radio";
+                input.name = this.absolute_name;
+                input.id = `${this.absolute_name}_${option}`;
+                input.value = option ?? "";
 
-            if (this.onChange) {
-                input.addEventListener("change", (e)=>{
-                    if (this.value == e.target.value) {return}
-                    this.value = e.target.value;
-                    this.onChange(e)
-                });
-            }
+                const p = document.createElement("p");
+                p.textContent = option ?? ""; // Si es null, muestra texto vacío
 
-            value.appendChild(input);
-            value.appendChild(p);
-            this.current.appendChild(value);
+                if (this.onChange) {
+                    input.addEventListener("change", (e) => {
+                        if (this.value == e.target.value) { return }
+                        this.value = e.target.value;
+                        this.onChange(e)
+                    });
+                }
 
-            if (option === null) {
-                input.checked = true;
-                input.disabled = true;
-            } else {
-                const li = document.createElement("li");
-                const label = document.createElement("label");
-                label.setAttribute("for", `${this.absolute_name}_${option}`);
-                label.textContent = option;
-                li.appendChild(label);
-                this.list.appendChild(li);
+                value.appendChild(input);
+                value.appendChild(p);
+                this.current.appendChild(value);
+
+                if (option === null) {
+                    input.checked = true;
+                    input.disabled = true;
+                } else {
+                    const li = document.createElement("li");
+                    const label = document.createElement("label");
+                    label.setAttribute("for", `${this.absolute_name}_${option}`);
+                    label.textContent = option;
+                    li.appendChild(label);
+                    this.list.appendChild(li);
+                }
             }
         });
 
@@ -97,21 +100,21 @@ class CustomSelect extends HTMLElement {
 
     }
 
-    setOptions(options = []){
+    setOptions(options = []) {
         this.options = options;
         this.makeOptions()
     }
 
-    setTree(tree= {}){
+    setTree(tree = {}) {
         this.tree = tree;
         this.options = [];
-        Object.keys(this.tree).forEach(e => {this.options.push(e);});
+        Object.keys(this.tree).forEach(e => { this.options.push(e); });
         this.makeOptions()
     }
 
-    getTreeSelect(){return this.tree[this.value];}
+    getTreeSelect() { return this.tree[this.value]; }
 
-    getValue(){return this.value;}
+    getValue() { return this.value; }
 
     setValue(value) {
         let input = this.querySelector(`input[value="${value}"]`);

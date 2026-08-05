@@ -67,7 +67,14 @@ class DataSetTreeNode extends HTMLElement {
 
         // Renderizado recursivo de hijos
         if (isObject) {
-            for (const [k, v] of Object.entries(valor)) {
+
+            let entries = Object.entries(valor);
+            entries.sort((a, b) => {
+                if (a[0] === "NewButton" && a[1] === true) return 1;  // Mueve "NewButton" al final
+                if (b[0] === "NewButton" && b[1] === true) return -1; // Mantiene el resto antes
+                return 0; // Conserva el orden original entre los demás
+            });
+            for (const [k, v] of entries) {
                 const child = document.createElement("dataset-tree-node");
                 child.setData(k, v, this.graph, this);
                 this.next_level.appendChild(child);
@@ -90,16 +97,22 @@ class Datasets {
         this.make()
     }
 
-    make(){
+    make() {
         this.AddNewButton(this.dataSet);
-        for (const [clave, valor] of Object.entries(this.dataSet)) {
+        let entries = Object.entries(this.dataSet);
+        entries.sort((a, b) => {
+            if (a[0] === "NewButton" && a[1] === true) return 1;  // Mueve "NewButton" al final
+            if (b[0] === "NewButton" && b[1] === true) return -1; // Mantiene el resto antes
+            return 0; // Conserva el orden original entre los demás
+        });
+        for (const [clave, valor] of entries) {
             const node = document.createElement("dataset-tree-node");
             node.setData(clave, valor, this);
             this.Tree.appendChild(node);
         }
     }
 
-    newValue(path){
+    newValue(path) {
         let actual = this.dataSet;
         for (let i = 0; i < path.length - 1; i++) {
             actual = actual[path[i]];
@@ -137,11 +150,11 @@ class Datasets {
 
     }
 
-    AddNewButton(obj){
+    AddNewButton(obj) {
         Datasets.AddNewButton(obj);
     }
-    static AddNewButton(obj) {   
-        obj.NewButton = true;        
+    static AddNewButton(obj) {
+        obj.NewButton = true;
         for (const [key, valor] of Object.entries(obj)) {
             let value = valor
             if (valor == null) {
@@ -150,11 +163,21 @@ class Datasets {
             }
             if (value !== null && typeof value === "object") {
                 this.AddNewButton(value);
-            } 
+            }
         }
     }
 
     removeNewButtons(obj) {
+        if (obj === null || typeof obj !== "object") return;
+        if (obj.NewButton) {
+            delete obj.NewButton;
+        }
+        for (const valor of Object.values(obj)) {
+            this.removeNewButtons(valor);
+        }
+
+    }
+    static removeNewButtons(obj) {
         if (obj === null || typeof obj !== "object") return;
         if (obj.NewButton) {
             delete obj.NewButton;
